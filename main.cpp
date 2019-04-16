@@ -14,7 +14,7 @@ int main(int argc, const char * argv[]) {
                 case sf::Event::Closed:
                     window.close();
                     
-                    //test
+                    
                     break;
         
                 case sf::Event::Resized:
