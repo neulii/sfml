@@ -3,7 +3,7 @@
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
-    sf::RenderWindow window(sf::VideoMode(800,600),"super fenster");
+    sf::RenderWindow window(sf::VideoMode(800,600),"steelManager");
     
     while (window.isOpen()) {
         sf::Event event;
@@ -14,22 +14,11 @@ int main(int argc, const char * argv[]) {
                 case sf::Event::Closed:
                     window.close();
                     
-                    //test
                     break;
-        
-                case sf::Event::Resized:
-                    std::cout << "super resized";
-                    
-                    break;
-                
-                case sf::Event::MouseMoved:
-                    std::cout << sf::Mouse::getPosition(window).x << "  /  " << sf::Mouse::getPosition(window).y << std::endl;
-                    break;
+
             }
         }
-        
-        //std::cout << "elapsed time: " << clock.getElapsedTime().asMicroseconds()<< "\n";
-        
+ 
         clock.restart();
         //update game logic
         
@@ -41,7 +30,6 @@ int main(int argc, const char * argv[]) {
         shape.setFillColor(sf::Color::Red);
         
         window.draw(shape);
-        
         
         window.display();
     }
