@@ -3,6 +3,9 @@
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
+   
+    
+    
     
     sf::RenderWindow window(sf::VideoMode(800,600),"steelManager");
     sf::Clock dT;
@@ -11,7 +14,7 @@ int main(int argc, const char * argv[]) {
     
     sf::Texture grassTex;
     
-    if(!grassTex.loadFromFile("grassField.png")){
+    if(!grassTex.loadFromFile("images/grassField.png")){
         std::cout << "Fehler beim Laden des Bildes";
     }
     
@@ -46,6 +49,7 @@ int main(int argc, const char * argv[]) {
         //clear screen
         window.clear();
         
+        grassSprite.move(0.1,0 );
         //draw objects
         window.draw(grassSprite);
         
