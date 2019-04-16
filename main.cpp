@@ -17,51 +17,14 @@ int main(int argc, const char * argv[]) {
                     //test
                     break;
         
-                    
-
-
                 case sf::Event::Resized:
                     std::cout << "super resized";
                     
                     break;
-                case sf::Event::LostFocus:
-                    
-                    break;
-                case sf::Event::GainedFocus:
-                    
-                    break;
-                case sf::Event::TextEntered:
-                    
-                    break;
-                case sf::Event::KeyPressed:
-                    
-                    break;
-                case sf::Event::KeyReleased:
-                    
-                    break;
-                case sf::Event::MouseWheelMoved:
-                    
-                    break;
-                case sf::Event::MouseWheelScrolled:
-                    
-                    break;
-                case sf::Event::MouseButtonPressed:
                 
-                    break;
-                case sf::Event::MouseButtonReleased:
-                    
-                    break;
                 case sf::Event::MouseMoved:
                     std::cout << sf::Mouse::getPosition(window).x << "  /  " << sf::Mouse::getPosition(window).y << std::endl;
                     break;
-                case sf::Event::MouseEntered:
-                    
-                    break;
-                case sf::Event::MouseLeft:
-                    
-                    break;
-               
-              
             }
         }
         
