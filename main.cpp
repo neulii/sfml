@@ -8,7 +8,18 @@ int main(int argc, const char * argv[]) {
     sf::Clock dT;
     
     sf::CircleShape circle(20);
-    circle.setPosition(100, 100);
+    
+    sf::Texture grassTex;
+    
+    if(!grassTex.loadFromFile("grassField.png")){
+        std::cout << "Fehler beim Laden des Bildes";
+    }
+    
+    sf::Sprite grassSprite;
+    grassSprite.setTexture(grassTex);
+    grassSprite.setPosition(100,100);
+    
+    circle.setPosition(10, 10);
     circle.setFillColor(sf::Color::Red);
     
     while (window.isOpen()) {
@@ -26,7 +37,7 @@ int main(int argc, const char * argv[]) {
         }
         
         sf::Time time = dT.getElapsedTime();
-       
+        //std::cout << time.asMicroseconds() << std::endl;
         
         //update game logic
       
@@ -36,6 +47,7 @@ int main(int argc, const char * argv[]) {
         window.clear();
         
         //draw objects
+        window.draw(grassSprite);
         
         window.draw(circle);
         
