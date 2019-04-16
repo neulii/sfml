@@ -14,6 +14,16 @@ int main(int argc, const char * argv[]) {
                 case sf::Event::Closed:
                     window.close();
                     
+                    
+                    break;
+        
+                case sf::Event::Resized:
+                    std::cout << "super resized";
+                    
+                    break;
+                
+                case sf::Event::MouseMoved:
+                    std::cout << sf::Mouse::getPosition(window).x << "  /  " << sf::Mouse::getPosition(window).y << std::endl;
                     break;
 
             }
