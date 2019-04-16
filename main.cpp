@@ -2,46 +2,60 @@
 
 #include <iostream>
 
+
+void render(sf::RenderWindow &window);
+void update(sf::Time dT);
+
+
+
 int main(int argc, const char * argv[]) {
+    
     sf::RenderWindow window(sf::VideoMode(800,600),"steelManager");
+    sf::Clock dT;
     
     while (window.isOpen()) {
         sf::Event event;
-        sf::Clock clock;
+      
         
         while(window.pollEvent(event)){
             switch (event.type){
                 case sf::Event::Closed:
+                    
                     window.close();
-                    
-                    
                     break;
-        
-                case sf::Event::Resized:
-                    std::cout << "super resized";
-                    
-                    break;
-                
-                case sf::Event::MouseMoved:
-                    std::cout << sf::Mouse::getPosition(window).x << "  /  " << sf::Mouse::getPosition(window).y << std::endl;
-                    break;
+      
 
             }
         }
- 
-        clock.restart();
-        //update game logic
         
+        sf::Time time = dT.getElapsedTime();
+       
+        
+        //update game logic
+        update(time);
+        dT.restart();
+        
+        
+        
+        
+        //clear screen
         window.clear();
         //draw objects
-        
-        sf::CircleShape shape(10);
-        shape.setPosition(100,100);
-        shape.setFillColor(sf::Color::Red);
-        
-        window.draw(shape);
+        render(window);
+     
         
         window.display();
     }
     return EXIT_SUCCESS;
+}
+
+
+void render(sf::RenderWindow &window){
+    
+    
+}
+
+void update(sf::Time dT){
+    
+    
 }
