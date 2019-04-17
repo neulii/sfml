@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iostream>
+
 
 int game();
 
@@ -12,5 +14,5 @@ int main() {
     
     
     
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }
