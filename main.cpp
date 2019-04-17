@@ -1,13 +1,18 @@
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
+#include "Functions.hpp"
 
-int main(int argc, const char * argv[]) {
+int game() {
    
+    bool moveRight = true;
+    sf::Time time;
     
-    
+    const float SPEED = 0.5;
     
     sf::RenderWindow window(sf::VideoMode(800,600),"steelManager");
+    window.setFramerateLimit(60);
+    
     sf::Clock dT;
     
     sf::CircleShape circle(20);
@@ -39,8 +44,10 @@ int main(int argc, const char * argv[]) {
             }
         }
         
-        sf::Time time = dT.getElapsedTime();
-        //std::cout << time.asMicroseconds() << std::endl;
+        time = dT.getElapsedTime();
+        long timeElapsed = time.asMilliseconds();
+        
+        std::cout << time.asMicroseconds() << std::endl;
         
         //update game logic
       
@@ -49,7 +56,22 @@ int main(int argc, const char * argv[]) {
         //clear screen
         window.clear();
         
-        grassSprite.move(0.1,0 );
+       
+        
+        if(grassSprite.getPosition().x+grassSprite.getLocalBounds().width>window.sf::Window::getSize().x){
+            moveRight = false;
+            
+        }
+        if(grassSprite.getPosition().x<0)
+            moveRight = true;
+        
+        
+        if(moveRight)
+            grassSprite.move(SPEED * timeElapsed, 0);
+           // grassSprite.move(SPEED * time, 0);
+        else
+            grassSprite.move(-SPEED * timeElapsed, 0);
+        
         //draw objects
         window.draw(grassSprite);
         
@@ -59,5 +81,6 @@ int main(int argc, const char * argv[]) {
         
         window.display();
     }
+    
     return EXIT_SUCCESS;
 }

@@ -10,6 +10,7 @@
 #define Functions_hpp
 
 int add(int a, int b);
+int game();
 
 
 #endif /* Functions_hpp */
