@@ -4,8 +4,10 @@
 class GameObject
 {
 public:
-	virtual void update(long dT);
-	virtual void render(sf::RenderWindow);
+
+	
+	virtual void update(long dT) = 0;
+	virtual void render(sf::RenderWindow) = 0;
 
 };
 

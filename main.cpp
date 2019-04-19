@@ -2,9 +2,12 @@
 
 #include <iostream>
 #include "Functions.hpp"
+#include "Tile.h"
 
 int game() {
    
+
+
     sf::Time time;
     
 	//create window
