@@ -10,7 +10,7 @@ int main() {
     
    
     
-    //game();
+    game();
     
     int n = 20;
     

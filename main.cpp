@@ -3,29 +3,49 @@
 #include <iostream>
 #include "Functions.hpp"
 
+//loading texture zur sprite
+sf::Sprite getSpriteFromFile(std::string fileName, std::vector<sf::Texture> &textures){
+    
+    sf::Texture texture;
+    textures.push_back(texture);
+    
+    if(!texture.loadFromFile(fileName)){
+        std::cout << "Failed to load picture: " << fileName << std::endl;
+    }
+    
+    sf::Sprite sprite;
+    
+    sprite.setTexture(texture);
+    return sprite;
+    
+}
+
+
 int game() {
-   
+    
+    std::vector<sf::Texture> textures;
+    
+    
+    
+    sf::Texture grassTexture;
+    
     bool moveRight = true;
     sf::Time time;
     
     const float SPEED = 0.5;
     
-    sf::RenderWindow window(sf::VideoMode(800,600),"steelManager");
+    sf::RenderWindow window(sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(60);
+    
     
     sf::Clock dT;
     
     sf::CircleShape circle(20);
     
-    sf::Texture grassTex;
+    sf::Sprite grassSprite = getSpriteFromFile("images/grassField.png",textures);
+    grassSprite.setPosition(100, 100);
     
-    if(!grassTex.loadFromFile("images/grassField.png")){
-        std::cout << "Fehler beim Laden des Bildes";
-    }
-    
-    sf::Sprite grassSprite;
-    grassSprite.setTexture(grassTex);
-    grassSprite.setPosition(100,100);
+    std::cout << grassSprite.getPosition().x << "    " << grassSprite.getPosition().y << std::endl;
     
     circle.setPosition(10, 10);
     circle.setFillColor(sf::Color::Red);
@@ -47,7 +67,7 @@ int game() {
         time = dT.getElapsedTime();
         long timeElapsed = time.asMilliseconds();
         
-        std::cout << time.asMicroseconds() << std::endl;
+        //std::cout << time.asMicroseconds() << std::endl;
         
         //update game logic
       
@@ -84,3 +104,6 @@ int game() {
     
     return EXIT_SUCCESS ;
 }
+
+
+
