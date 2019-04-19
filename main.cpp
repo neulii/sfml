@@ -3,10 +3,19 @@
 #include <iostream>
 #include "Functions.hpp"
 #include "Tile.h"
+#include "FieldType.h"
 
 int game() {
    
+	sf::Texture coalField;
+	if (!coalField.loadFromFile("images/coalField.png")) {
+		std::cout << "Fehler beim Laden des bildes" << std::endl;
 
+	}
+
+	
+
+	Tile tile(FieldType::coalField, 10, 10, 100, 100, coalField);
 
     sf::Time time;
     
@@ -15,6 +24,7 @@ int game() {
     window.setFramerateLimit(60);
     
     
+
     sf::Clock dT;
     
     sf::CircleShape circle(20);
