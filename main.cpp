@@ -7,28 +7,28 @@
 
 int game() {
    
-	sf::Texture coalField;
-	if (!coalField.loadFromFile("images/coalField.png")) {
-		std::cout << "Fehler beim Laden des bildes" << std::endl;
-
-	}
 
 	
-
-	Tile tile(FieldType::coalField, 10, 10, 100, 100, coalField);
-
     sf::Time time;
     
 	//create window
 	sf::RenderWindow window(sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(60);
     
+	sf::Texture coalField;
+	if (!coalField.loadFromFile("images/coalField.png")) {
+		std::cout << "Fehler beim Laden des bildes" << std::endl;
+
+	}
+
+	Tile tile(FieldType::coalField, 10, 10, 100, 100, coalField);
+
     
 
     sf::Clock dT;
     
     sf::CircleShape circle(20);
-    
+	circle.setFillColor(sf::Color::Red);
     
     while (window.isOpen()) {
         sf::Event event;
@@ -62,7 +62,7 @@ int game() {
         //draw objects
         
         
-        //window.draw(circle);
+        window.draw(circle);
         
       
         

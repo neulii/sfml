@@ -10,13 +10,15 @@ class Tile : public GameObject
 		int width;
 		int height;
 
+		sf::Texture texture;
+
 		FieldType fieldType;
 
 
 	public:
 		Tile(FieldType fieldType, int x, int y, int width, int height, sf::Texture texture);
 
-		void render(sf::RenderWindow window);
+		void render(sf::RenderWindow &window);
 		void update(long dT);
 	
 		~Tile();

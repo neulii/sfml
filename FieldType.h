@@ -3,5 +3,5 @@
 enum FieldType
 {
 	coalField,
-	ironOreField,
-//};
+	ironOreField
+};
