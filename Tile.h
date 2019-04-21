@@ -10,6 +10,8 @@ class Tile : public GameObject
 		int width;
 		int height;
 
+		sf::RectangleShape rect;
+
 		sf::Texture texture;
 		sf::Sprite tileSprite;
 
