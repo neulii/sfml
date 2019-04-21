@@ -21,7 +21,7 @@ int game() {
 
 	}
 	
-	Tile tile(FieldType::coalField, 100, 100,10, 10, coalField);
+	Tile tile(FieldType::coalField, 100, 100, coalField);
 
     
 
