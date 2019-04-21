@@ -1,27 +1,33 @@
 #include "Tile.h"
+#include <iostream>
 
-Tile::Tile(FieldType fieldType, int x, int y, int width, int height, sf::Texture texture) {
+Tile::Tile(FieldType fieldType, int x, int y, sf::Texture texture) {
 	this->x = x;
 	this->y = y;
-	this->width = width;
-	this->height = height;
 	this->texture = texture;
 	this->fieldType = fieldType;
+	this->width = texture.getSize().x;
+	this->height = texture.getSize().y;
+	
+	tileSprite.setTexture(this->texture);
+	tileSprite.setPosition(x, y);
+}
+
+
+//render the tile
+void Tile::render(sf::RenderWindow &window) {
+	
+	window.draw(tileSprite);
+
+}
+
+//update logic
+void Tile::update(long dT) {
+
 }
 
 
 Tile::~Tile()
 {
-}
-
-void Tile::render(sf::RenderWindow &window) {
-	
-
-
-
-	
-}
-
-void Tile::update(long dT) {
 
 }

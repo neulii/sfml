@@ -20,8 +20,8 @@ int game() {
 		std::cout << "Fehler beim Laden des bildes" << std::endl;
 
 	}
-
-	Tile tile(FieldType::coalField, 10, 10, 100, 100, coalField);
+	
+	Tile tile(FieldType::coalField, 100, 100,10, 10, coalField);
 
     
 
@@ -61,10 +61,12 @@ int game() {
       
         //draw objects
         
-        
+		tile.render(window);
+
+		
         window.draw(circle);
         
-      
+		
         
         window.display();
     }
