@@ -1,61 +1,33 @@
-#include <SFML/Graphics.hpp>
-
 #include <iostream>
 #include "Functions.hpp"
 #include "Tile.h"
 #include "FieldType.h"
+#include "GameState.h"
+#include "MenuButton.h"
 
-int game() {
-	sf::Texture coalField;
-	sf::Image testImage;
-   
+int main() {
+	
+	
+	MenuButton button; 
+
+	GameState gameState = GameState::titleMenu;
 
 	
+	
+	
+	
+	
+	
+   
     sf::Time time;
     
 	//create window
 	sf::RenderWindow window(sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(60);		//set frame limit to 60 fps
     
-
-	if (!coalField.loadFromFile("images/coalField.png")) {
-		std::cout << "Fehler beim Laden des bildes" << std::endl;
-
-	}
-
-	if (!testImage.loadFromFile("images/coalfield.png")) {
-		std::cout << "Fehler beim Laden des bildes" << std::endl;
-
-	}
-
-	Tile tile(FieldType::coalField, 100, 100, coalField);
-
-	const int BRIGHTNESS = -50;
-
-	sf::Color tempPixel;
-
-	for (int i = 0; i < testImage.getSize().x;i++) {
-		for (int j = 0; j < testImage.getSize().y; j++) {
-			tempPixel = testImage.getPixel(i, j);
-			tempPixel = tempPixel + sf::Color(BRIGHTNESS,BRIGHTNESS, BRIGHTNESS);
-			testImage.setPixel(i,j,tempPixel);
-
-		}
-
-	}
 
     sf::Clock dT;
 
-
-	sf::Texture test;
-
-
-	test.loadFromImage(testImage);
-
-
-	sf::Sprite testSprite;
-	testSprite.setTexture(test);
-	testSprite.setPosition(160, 100);
 
     
     while (window.isOpen()) {
@@ -75,32 +47,31 @@ int game() {
         time = dT.getElapsedTime();
         long timeElapsed = time.asMilliseconds();
         
-        //std::cout << time.asMicroseconds() << std::endl;
+     
         
         //update game logic
-      
-        dT.restart();
+        dT.restart();		//restart clock 
         
-        //clear screen
-        window.clear();
-        
+
+        window.clear();		//clear screen
        
-        
-      
         //draw objects
 		
+		switch (gameState)
+		{
 
-
-        
-		tile.render(window);
-
-		window.draw(testSprite);
+		case GameState::titleMenu:
 		
+			break;
+		
+		default:
+			break;
+		}
+
+
+       
         window.display();
     }
     
     return EXIT_SUCCESS ;
 }
-
-
-
