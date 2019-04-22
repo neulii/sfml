@@ -17,8 +17,10 @@ Tile::Tile(FieldType fieldType, int x, int y, sf::Texture texture) {
 	tileSprite.setTexture(this->texture);
 	tileSprite.setPosition(x, y);
 
-	sf::Uint8 light = 50; // 255 = initial brightness, 0 = black
-	tileSprite.setColor(sf::Color(light, light, light));
+	//sf::Uint8 light = 50; // 255 = initial brightness, 0 = black
+	//tileSprite.setColor(sf::Color(light, light, light));
+
+	
 
 }
 
