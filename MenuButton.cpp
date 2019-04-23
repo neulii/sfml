@@ -3,11 +3,31 @@
 
 void MenuButton::render(sf::RenderWindow& window) {
 
+	switch (isHoovered)
+	{
+	case true:
+		drawBackgroundcolor = hooverBackgroundColor;
+		drawTextColor = hooverTextColor;
+		cout << "super";
+
+		break;
+
+	case false:
+
+		drawBackgroundcolor = normalBackgroundColor;
+		drawTextColor = normalTextColor;
+		break;
+	}
+
 	window.draw(buttonShape);
 	window.draw(this->buttonText);
 }
 void MenuButton::update(long dT) {
 
+}
+
+void MenuButton::setHoovered(bool hoovered) {
+	this->isHoovered = hoovered;
 }
 
 MenuButton::MenuButton(string buttonText, float x, float y, float width, float height)
@@ -47,4 +67,8 @@ MenuButton::MenuButton(string buttonText, float x, float y, float width, float h
 
 MenuButton::~MenuButton()
 {
+}
+
+sf::FloatRect MenuButton::getButtonBounds() {
+	return buttonShape.getGlobalBounds();
 }

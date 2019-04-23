@@ -9,6 +9,7 @@ int main() {
 	
 	
 	MenuButton button("Spiel starten", 100,100,150,40); 
+	
 
 	GameState gameState = GameState::titleMenu;
 
@@ -40,6 +41,20 @@ int main() {
                     window.close();
                     break;
       
+				case sf::Event::MouseMoved:
+					sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+					sf::Vector2f mousePosF = sf::Vector2f(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
+
+
+					if (button.getButtonBounds().contains(mousePosF)) {
+						button.setHoovered(true);
+					}
+					else
+					{
+						button.setHoovered(false);
+					}
+
+					break;
 
             }
         }
@@ -51,7 +66,7 @@ int main() {
         
         //update game logic
         dT.restart();		//restart clock 
-        
+		button.update(timeElapsed);
 
         window.clear();		//clear screen
        

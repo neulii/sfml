@@ -36,8 +36,10 @@ public:
 	
 	MenuButton(string buttonText, float x, float y, float height, float width);
 
+	sf::FloatRect getButtonBounds();
 	void render(sf::RenderWindow& window);
 	void update(long dT);
+	void setHoovered(bool hoovered);
 
 	~MenuButton();
 };
