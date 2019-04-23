@@ -8,7 +8,7 @@
 int main() {
 	
 	
-	MenuButton button("Spiel starten", 100,100,100,20); 
+	MenuButton button("Spiel starten", 100,100,150,40); 
 
 	GameState gameState = GameState::titleMenu;
 
