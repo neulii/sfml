@@ -34,7 +34,7 @@ void MenuButton::render(sf::RenderWindow& window) {
 	}
 
 	buttonShape.setFillColor(drawBackgroundcolor);
-	buttonText.setColor(drawTextColor);
+	buttonText.setFillColor(drawTextColor);
 	
 	window.draw(shadow);
 	window.draw(buttonShape);
@@ -60,7 +60,7 @@ MenuButton::MenuButton(string buttonText, float x, float y, float width, float h
 
 	}
 	else
-		std::cout << "button-Schrift geladen";
+		std::cout << "Button-Font from button \"" << buttonText << "\" loaded" << std::endl;
 
 	drawBackgroundcolor = normalBackgroundColor;
 	drawTextColor = normalBackgroundColor;
@@ -78,8 +78,6 @@ MenuButton::MenuButton(string buttonText, float x, float y, float width, float h
 	this->buttonTextPosY = y + (height - this->buttonText.getLocalBounds().height) / 2;
 	this->buttonText.setPosition(buttonTextPosX,buttonTextPosY);
 	this->buttonText.setFillColor(normalTextColor);
-
-	std::cout << this->buttonText.getLocalBounds().width  << " / " <<  this->buttonText.getLocalBounds().height << endl;
 }
 
 MenuButton::~MenuButton()

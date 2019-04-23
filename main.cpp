@@ -4,6 +4,7 @@
 #include "FieldType.h"
 #include "GameState.h"
 #include "MenuButton.h"
+#include "Menu.h"
 
 int main() {
 	
@@ -12,6 +13,8 @@ int main() {
 	MenuButton button2("Spiel beenden", 100, 150, 150, 40);
 
 	GameState gameState = GameState::titleMenu;
+
+	Menu titleMenu;
 
 
     sf::Time time;
@@ -45,6 +48,7 @@ int main() {
 					else
 					{
 						button.setHoovered(false);
+						button.setPressed(false);
 					}
 
 					if (button2.getButtonBounds().contains(mousePosF)) {
@@ -52,6 +56,7 @@ int main() {
 					}
 					else
 					{
+						button2.setHoovered(false);
 						button2.setHoovered(false);
 					}
 
