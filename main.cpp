@@ -8,7 +8,7 @@
 int main() {
 	
 	
-	MenuButton button; 
+	MenuButton button("Spiel starten", 100,100,100,20); 
 
 	GameState gameState = GameState::titleMenu;
 
@@ -61,6 +61,8 @@ int main() {
 		{
 
 		case GameState::titleMenu:
+
+			button.render(window);
 		
 			break;
 		
