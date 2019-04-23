@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FIELDTYPE_H
+#define FIELDTYPE_H
 
 enum FieldType
 {
@@ -8,3 +9,6 @@ enum FieldType
 	coalMineField,
 	rawIronProduction
 };
+
+
+#endif // !FIELDTYPE_H

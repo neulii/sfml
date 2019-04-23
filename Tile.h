@@ -1,4 +1,7 @@
-#pragma once
+#ifndef TILE_H
+#define TilE_H
+
+
 #include "GameObject.h"
 #include "FieldType.h"
 class Tile : public GameObject
@@ -26,4 +29,6 @@ class Tile : public GameObject
 	
 		~Tile();
 	};
+
+#endif // !TILE_H
 

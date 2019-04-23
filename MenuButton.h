@@ -1,4 +1,6 @@
-#pragma once
+#ifndef MENUBUTTON_H
+#define MENUBUTTON_H
+
 #include "GameObject.h"
 class MenuButton : public GameObject
 {
@@ -11,4 +13,9 @@ public:
 
 	~MenuButton();
 };
+
+
+#endif // !MENUBUTTON_H
+
+
 
