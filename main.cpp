@@ -8,29 +8,20 @@
 int main() {
 	
 	
-	MenuButton button("Spiel starten", 100,100,150,40); 
-	
+	MenuButton button("Spiel starten", 100,100,150,40);
+	MenuButton button2("Spiel beenden", 100, 150, 150, 40);
 
 	GameState gameState = GameState::titleMenu;
 
-	
-	
-	
-	
-	
-	
-   
+
     sf::Time time;
     
 	//create window
 	sf::RenderWindow window(sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(60);		//set frame limit to 60 fps
     
-
     sf::Clock dT;
 
-
-    
     while (window.isOpen()) {
         sf::Event event;
       
@@ -56,19 +47,28 @@ int main() {
 						button.setHoovered(false);
 					}
 
+					if (button2.getButtonBounds().contains(mousePosF)) {
+						button2.setHoovered(true);
+					}
+					else
+					{
+						button2.setHoovered(false);
+					}
+
 					break;
 
 				case sf::Event::MouseButtonPressed:
 					if(button.getIsHoovered())
 						button.setPressed(true);
+
+					if (button2.getIsHoovered())
+						button2.setPressed(true);
 					break;
 				
 				case sf::Event::MouseButtonReleased:
 					button.setPressed(false);
+					button2.setPressed(false);
 					break;
-
-				
-
             }
         }
         
@@ -91,6 +91,7 @@ int main() {
 		case GameState::titleMenu:
 
 			button.render(window);
+			button2.render(window);
 		
 			break;
 		

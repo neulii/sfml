@@ -3,6 +3,10 @@
 #include "Functions.hpp"
 
 void MenuButton::render(sf::RenderWindow& window) {
+	sf::RectangleShape shadow;
+	shadow.setPosition(x-2, y-2);
+	shadow.setFillColor(sf::Color::Yellow);
+	shadow.setSize(sf::Vector2f(width, height));
 
 	switch (isHoovered)
 	{
@@ -21,8 +25,8 @@ void MenuButton::render(sf::RenderWindow& window) {
 	}
 
 	if (isPressed) {
-		buttonShape.setPosition(x + 2, y + 2);
-		buttonText.setPosition(buttonTextPosX + 2, buttonTextPosY + 2);
+		buttonShape.setPosition(x - 2, y -2);
+		buttonText.setPosition(buttonTextPosX - 2, buttonTextPosY - 2);
 	}
 	else {
 		buttonShape.setPosition(x, y);
@@ -32,6 +36,7 @@ void MenuButton::render(sf::RenderWindow& window) {
 	buttonShape.setFillColor(drawBackgroundcolor);
 	buttonText.setColor(drawTextColor);
 	
+	window.draw(shadow);
 	window.draw(buttonShape);
 	window.draw(this->buttonText);
 }
