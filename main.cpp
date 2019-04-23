@@ -34,6 +34,9 @@ int main() {
     while (window.isOpen()) {
         sf::Event event;
       
+		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+		sf::Vector2f mousePosF = sf::Vector2f(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
+
         while(window.pollEvent(event)){
             switch (event.type){
                 case sf::Event::Closed:
@@ -42,8 +45,7 @@ int main() {
                     break;
       
 				case sf::Event::MouseMoved:
-					sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-					sf::Vector2f mousePosF = sf::Vector2f(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
+					
 
 
 					if (button.getButtonBounds().contains(mousePosF)) {
@@ -55,6 +57,17 @@ int main() {
 					}
 
 					break;
+
+				case sf::Event::MouseButtonPressed:
+					if(button.getIsHoovered())
+						button.setPressed(true);
+					break;
+				
+				case sf::Event::MouseButtonReleased:
+					button.setPressed(false);
+					break;
+
+				
 
             }
         }

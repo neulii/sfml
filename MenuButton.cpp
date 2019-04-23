@@ -1,24 +1,37 @@
 #include "MenuButton.h"
 #include <iostream>
+#include "Functions.hpp"
 
 void MenuButton::render(sf::RenderWindow& window) {
 
 	switch (isHoovered)
 	{
 	case true:
-		drawBackgroundcolor = hooverBackgroundColor;
-		drawTextColor = hooverTextColor;
-		cout << "super";
-
+		
+		this->drawBackgroundcolor = this->hooverBackgroundColor;
+		this->drawTextColor = this->hooverTextColor;
+		
 		break;
 
 	case false:
 
-		drawBackgroundcolor = normalBackgroundColor;
-		drawTextColor = normalTextColor;
+		this->drawBackgroundcolor = this->normalBackgroundColor;
+		this->drawTextColor = this->normalTextColor;
 		break;
 	}
 
+	if (isPressed) {
+		buttonShape.setPosition(x + 2, y + 2);
+		buttonText.setPosition(buttonTextPosX + 2, buttonTextPosY + 2);
+	}
+	else {
+		buttonShape.setPosition(x, y);
+		buttonText.setPosition(buttonTextPosX, buttonTextPosY);
+	}
+
+	buttonShape.setFillColor(drawBackgroundcolor);
+	buttonText.setColor(drawTextColor);
+	
 	window.draw(buttonShape);
 	window.draw(this->buttonText);
 }
@@ -44,8 +57,6 @@ MenuButton::MenuButton(string buttonText, float x, float y, float width, float h
 	else
 		std::cout << "button-Schrift geladen";
 
-	isHoovered = false;
-
 	drawBackgroundcolor = normalBackgroundColor;
 	drawTextColor = normalBackgroundColor;
 
@@ -58,12 +69,13 @@ MenuButton::MenuButton(string buttonText, float x, float y, float width, float h
 	this->buttonText.setFont(buttonFont);
 	this->buttonText.setString(buttonText);
 	this->buttonText.setCharacterSize(20);
-	this->buttonText.setPosition(x + (width - this->buttonText.getLocalBounds().width) / 2, y + (height - this->buttonText.getLocalBounds().height) / 2);
+	this->buttonTextPosX = x + (width - this->buttonText.getLocalBounds().width) / 2;
+	this->buttonTextPosY = y + (height - this->buttonText.getLocalBounds().height) / 2;
+	this->buttonText.setPosition(buttonTextPosX,buttonTextPosY);
 	this->buttonText.setFillColor(normalTextColor);
 
 	std::cout << this->buttonText.getLocalBounds().width  << " / " <<  this->buttonText.getLocalBounds().height << endl;
 }
-
 
 MenuButton::~MenuButton()
 {
@@ -71,4 +83,12 @@ MenuButton::~MenuButton()
 
 sf::FloatRect MenuButton::getButtonBounds() {
 	return buttonShape.getGlobalBounds();
+}
+
+void MenuButton::setPressed(bool pressed) {
+	this->isPressed = pressed;
+}
+
+bool MenuButton::getIsHoovered(){
+	return isHoovered;
 }
