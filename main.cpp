@@ -17,7 +17,9 @@ int main() {
 	MenuButton button2("Spiel beenden", 100, 150, 150, 40);
 
 	GameState gameState = GameState::titleMenu;
-	Menu titleMenu;
+	Menu titleMenu(window);
+
+	
 
 	titleMenu.addMenuButton(button);
 	titleMenu.addMenuButton(button2);
@@ -40,10 +42,12 @@ int main() {
                     break;
       
 				case sf::Event::MouseMoved:
+
+					titleMenu.setMousePos(mousePosF);
+
+				
 					
-
-
-					if (button.getButtonBounds().contains(mousePosF)) {
+					/*if (button.getButtonBounds().contains(mousePosF)) {
 						button.setHoovered(true);
 					}
 					else
@@ -60,7 +64,7 @@ int main() {
 						button2.setHoovered(false);
 						button2.setHoovered(false);
 					}
-
+*/
 					break;
 
 				case sf::Event::MouseButtonPressed:
@@ -86,6 +90,8 @@ int main() {
         //update game logic
         dT.restart();		//restart clock 
 		button.update(timeElapsed);
+
+		titleMenu.update(timeElapsed);
 
         window.clear();		//clear screen
        
