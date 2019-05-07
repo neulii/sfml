@@ -30,12 +30,11 @@ void Menu::setMousePos(sf::Vector2f mousePos) {
 void Menu::clicked() {
 	for (MenuButton* button : menuButtons) {
 		
-		if(button->getIsHoovered())
+		if (button->getIsHoovered()) {
 			button->setPressed(true);
 
-
+		}
 	}
-
 }
 
 void Menu::mouseRelease() {
@@ -44,13 +43,8 @@ void Menu::mouseRelease() {
 		if (button->getIsHoovered() && button->getIsPressed()) {
 			button->setPressed(false);
 		}
-
-
 	}
-
 }
-
-
 
 void Menu::render(sf::RenderWindow& window)
 {
