@@ -37,7 +37,7 @@ private:
 
 public:
 	
-	MenuButton(string buttonText, float x, float y, float height, float width);
+	MenuButton(string buttonText, float x, float y, float width, float height);
 
 	sf::FloatRect getButtonBounds();
 	void render(sf::RenderWindow& window);
@@ -45,6 +45,7 @@ public:
 	void setHoovered(bool hoovered);
 	void setPressed(bool pressed);
 	bool getIsHoovered();
+	bool getIsPressed();
 
 	~MenuButton();
 };

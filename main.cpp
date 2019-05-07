@@ -19,10 +19,14 @@ int main() {
 	GameState gameState = GameState::titleMenu;
 	Menu titleMenu(window);
 
+	titleMenu.addMenuButton("super spiel", 150, 50);
+	titleMenu.addMenuButton("coo", 150, 50);
+	titleMenu.addMenuButton("alskdjfalsd", 150, 50);
+	titleMenu.addMenuButton("asdf", 150, 50);
+	titleMenu.addMenuButton("alskdjfalssdfd", 150, 50);
+	titleMenu.addMenuButton("asdf", 150, 50);
 	
 
-	titleMenu.addMenuButton(button);
-	titleMenu.addMenuButton(button2);
 
     sf::Time time;
     
@@ -45,39 +49,18 @@ int main() {
 
 					titleMenu.setMousePos(mousePosF);
 
-				
-					
-					/*if (button.getButtonBounds().contains(mousePosF)) {
-						button.setHoovered(true);
-					}
-					else
-					{
-						button.setHoovered(false);
-						button.setPressed(false);
-					}
-
-					if (button2.getButtonBounds().contains(mousePosF)) {
-						button2.setHoovered(true);
-					}
-					else
-					{
-						button2.setHoovered(false);
-						button2.setHoovered(false);
-					}
-*/
 					break;
 
 				case sf::Event::MouseButtonPressed:
-					/*if(button.getIsHoovered())
-						button.setPressed(true);
 
-					if (button2.getIsHoovered())
-						button2.setPressed(true);*/
+					titleMenu.clicked();
+				
 					break;
 				
 				case sf::Event::MouseButtonReleased:
-				/*	button.setPressed(false);
-					button2.setPressed(false);*/
+
+					titleMenu.mouseRelease();
+					
 					break;
             }
         }

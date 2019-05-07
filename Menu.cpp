@@ -9,16 +9,16 @@ Menu::Menu(sf::RenderWindow &window)
 
 void Menu::update(long dT)
 {
-	for (MenuButton &button : menuButtons)
+	for (MenuButton *button : menuButtons)
 	{
-		if (button.getButtonBounds().contains(this->mousePos)) {
-			button.setHoovered(true);
+		if (button->getButtonBounds().contains(this->mousePos)) {
+			button->setHoovered(true);
 		}
 
 		else
 		{
-			button.setHoovered(false);
-			button.setPressed(false);
+			button->setHoovered(false);
+			button->setPressed(false);
 		}
 	}
 }
@@ -27,16 +27,42 @@ void Menu::setMousePos(sf::Vector2f mousePos) {
 	this->mousePos = mousePos;
 }
 
+void Menu::clicked() {
+	for (MenuButton* button : menuButtons) {
+		
+		if(button->getIsHoovered())
+			button->setPressed(true);
+
+
+	}
+
+}
+
+void Menu::mouseRelease() {
+	for (MenuButton* button : menuButtons) {
+
+		if (button->getIsHoovered() && button->getIsPressed()) {
+			button->setPressed(false);
+		}
+
+
+	}
+
+}
+
+
+
 void Menu::render(sf::RenderWindow& window)
 {
-	for(MenuButton &button: menuButtons)
+	for(MenuButton *button: menuButtons)
 	{
-		button.render(window);
+		button->render(window);
 	}
 }
 
-void Menu::addMenuButton(MenuButton menuButton) {
-	menuButtons.push_back(menuButton);
+void Menu::addMenuButton(string text, float width, float height) {
+	
+	menuButtons.push_back(new MenuButton(text, (window->getSize().x-width) / 2, distanceTop + menuButtons.size()*(height+distanceBetween), width, height));
 }
 
 void Menu::setDistanceTop(int distance) {

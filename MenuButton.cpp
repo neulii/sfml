@@ -95,3 +95,8 @@ void MenuButton::setPressed(bool pressed) {
 bool MenuButton::getIsHoovered(){
 	return isHoovered;
 }
+
+bool MenuButton::getIsPressed() {
+	return this->isPressed;
+
+}

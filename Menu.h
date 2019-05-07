@@ -7,9 +7,9 @@ class Menu : public GameObject
 {
 
 private:
-	std::vector<MenuButton> menuButtons;
-	int distanceTop = 200;
-	int distanceBetween = 50;
+	std::vector<MenuButton*> menuButtons;
+	int distanceTop = 100;
+	int distanceBetween = 10;
 
 	sf::Vector2f mousePos;
 	sf::RenderWindow *window;
@@ -19,10 +19,12 @@ public:
 
 	void update(long dT);
 	void render(sf::RenderWindow& window);
-	void addMenuButton(MenuButton button);
+	void addMenuButton(string text, float width, float height);
 	void setDistanceBetween(int distance);
 	void setDistanceTop(int distance);
 	void setMousePos(sf::Vector2f);
+	void clicked();
+	void mouseRelease();
 
 	~Menu();
 };
