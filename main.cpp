@@ -19,15 +19,10 @@ int main() {
 	GameState gameState = GameState::titleMenu;
 	Menu titleMenu(window);
 
-	titleMenu.addMenuButton("super spiel", 150, 50);
-	titleMenu.addMenuButton("coo", 150, 50);
-	titleMenu.addMenuButton("alskdjfalsd", 150, 50);
-	titleMenu.addMenuButton("asdf", 150, 50);
-	titleMenu.addMenuButton("alskdjfalssdfd", 150, 50);
-	titleMenu.addMenuButton("asdf", 150, 50);
+	titleMenu.addMenuButton("Neues Spiel", 150, 50);
+	titleMenu.addMenuButton("Spiel Laden", 150, 50);
+	titleMenu.addMenuButton("Spiel Beenden", 150, 50);
 	
-
-
     sf::Time time;
     
     sf::Clock dT;
@@ -37,6 +32,8 @@ int main() {
       
 		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 		sf::Vector2f mousePosF = sf::Vector2f(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
+
+		string clickedButton = "none";
 
         while(window.pollEvent(event)){
             switch (event.type){
@@ -53,7 +50,34 @@ int main() {
 
 				case sf::Event::MouseButtonPressed:
 
-					titleMenu.clicked();
+					switch (gameState)
+					{
+					case GameState::titleMenu:
+						
+						clickedButton = titleMenu.clicked();
+
+						//Neues Spiel starten
+						if (clickedButton == "Neues Spiel") {
+							
+
+						}
+
+						//Spiel Laden
+						if (clickedButton == "Spiel Laden") {
+
+
+						}
+
+						//Spiel beenden
+						if (clickedButton == "Spiel Beenden") {
+							exit(0);
+						}
+
+						break;
+					default:
+						break;
+					}
+
 				
 					break;
 				
@@ -69,7 +93,7 @@ int main() {
         long timeElapsed = time.asMilliseconds();
         
      
-        
+  
         //update game logic
         dT.restart();		//restart clock 
 		button.update(timeElapsed);

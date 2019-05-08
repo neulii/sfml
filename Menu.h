@@ -23,7 +23,7 @@ public:
 	void setDistanceBetween(int distance);
 	void setDistanceTop(int distance);
 	void setMousePos(sf::Vector2f);
-	void clicked();
+	string clicked();
 	void mouseRelease();
 
 	~Menu();

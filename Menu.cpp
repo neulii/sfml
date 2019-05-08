@@ -27,14 +27,19 @@ void Menu::setMousePos(sf::Vector2f mousePos) {
 	this->mousePos = mousePos;
 }
 
-void Menu::clicked() {
+string Menu::clicked() {
+	string buttonClicked = "none";
+
 	for (MenuButton* button : menuButtons) {
 		
 		if (button->getIsHoovered()) {
 			button->setPressed(true);
-
+			buttonClicked = button->getButtonText();
 		}
 	}
+
+	return buttonClicked;
+
 }
 
 void Menu::mouseRelease() {

@@ -46,6 +46,7 @@ public:
 	void setPressed(bool pressed);
 	bool getIsHoovered();
 	bool getIsPressed();
+	string getButtonText();
 
 	~MenuButton();
 };

@@ -98,5 +98,8 @@ bool MenuButton::getIsHoovered(){
 
 bool MenuButton::getIsPressed() {
 	return this->isPressed;
+}
 
+string MenuButton::getButtonText() {
+	return this->buttonText.getString();
 }
