@@ -22,7 +22,6 @@ Tile::Tile(FieldType fieldType, int x, int y, sf::Texture texture) {
 void Tile::render(sf::RenderWindow &window) {
 	
 	window.draw(tileSprite);
-
 }
 
 //update logic

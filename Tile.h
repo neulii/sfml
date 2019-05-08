@@ -1,7 +1,6 @@
 #ifndef TILE_H
 #define TilE_H
 
-
 #include "GameObject.h"
 #include "FieldType.h"
 class Tile : public GameObject
@@ -19,7 +18,6 @@ class Tile : public GameObject
 		sf::Sprite tileSprite;
 
 		FieldType fieldType;
-
 
 	public:
 		Tile(FieldType fieldType, int x, int y, sf::Texture texture);

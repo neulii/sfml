@@ -39,7 +39,6 @@ string Menu::clicked() {
 	}
 
 	return buttonClicked;
-
 }
 
 void Menu::mouseRelease() {
