@@ -53,6 +53,19 @@ void Menu::mouseRelease() {
 
 void Menu::render(sf::RenderWindow& window)
 {
+	float windowWidth = window.getSize().x;
+	float windowHeight = window.getSize().y;
+
+	float textureWidth = backgroundTex.getSize().x;
+	float textureHeight = backgroundTex.getSize().y;
+
+	float scaleX =  windowWidth/ textureWidth;
+	float scaleY =  windowHeight/ textureHeight;
+
+	backgroundSprite.setTexture(backgroundTex);
+	backgroundSprite.setScale(scaleX, scaleY);
+	window.draw(this->backgroundSprite);
+
 	for(MenuButton *button: menuButtons)
 	{
 		button->render(window);
@@ -70,6 +83,13 @@ void Menu::setDistanceTop(int distance) {
 
 void Menu::setDistanceBetween(int distance){
 	this->distanceBetween = distance;
+}
+
+void Menu::setBackground(sf::Texture &texture) {
+	this->backgroundTex = texture;
+
+
+
 }
 
 Menu::~Menu()

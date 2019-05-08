@@ -14,6 +14,9 @@ private:
 	sf::Vector2f mousePos;
 	sf::RenderWindow *window;
 
+	sf::Texture backgroundTex;
+	sf::Sprite backgroundSprite;
+
 public:
 	Menu(sf::RenderWindow &window);
 
@@ -25,6 +28,8 @@ public:
 	void setMousePos(sf::Vector2f);
 	string clicked();
 	void mouseRelease();
+
+	void setBackground(sf::Texture &texture);
 
 	~Menu();
 };

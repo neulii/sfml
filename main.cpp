@@ -12,12 +12,16 @@ int main() {
 	sf::RenderWindow window(sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(60);		//set frame limit to 60 fps
     
-	
-	MenuButton button("Spiel starten", 100,100,150,40);
-	MenuButton button2("Spiel beenden", 100, 150, 150, 40);
-
 	GameState gameState = GameState::titleMenu;
 	Menu titleMenu(window);
+
+	sf::Texture menuBackground;
+	menuBackground.loadFromFile("images/steel_background.jpg");
+
+	titleMenu.setBackground(menuBackground);
+	
+
+
 
 	titleMenu.addMenuButton("Neues Spiel", 150, 50);
 	titleMenu.addMenuButton("Spiel Laden", 150, 50);
@@ -96,7 +100,7 @@ int main() {
   
         //update game logic
         dT.restart();		//restart clock 
-		button.update(timeElapsed);
+		
 
 		titleMenu.update(timeElapsed);
 
