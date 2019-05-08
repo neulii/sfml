@@ -16,13 +16,10 @@ int main() {
 	Menu titleMenu(window);
 
 	sf::Texture menuBackground;
+	
 	menuBackground.loadFromFile("images/steel_background.jpg");
-
 	titleMenu.setBackground(menuBackground);
 	
-
-
-
 	titleMenu.addMenuButton("Neues Spiel", 150, 50);
 	titleMenu.addMenuButton("Spiel Laden", 150, 50);
 	titleMenu.addMenuButton("Spiel Beenden", 150, 50);

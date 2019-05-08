@@ -59,8 +59,8 @@ MenuButton::MenuButton(string buttonText, float x, float y, float width, float h
 		std::cout << "Fehler beim Laden der button-Schrift";
 
 	}
-	else
-		std::cout << "Button-Font from button \"" << buttonText << "\" loaded" << std::endl;
+	//else
+	//	std::cout << "Button-Font from button \"" << buttonText << "\" loaded" << std::endl;
 
 	drawBackgroundcolor = normalBackgroundColor;
 	drawTextColor = normalBackgroundColor;
