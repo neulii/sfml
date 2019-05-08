@@ -6,31 +6,46 @@
 #include "MenuButton.h"
 #include "Menu.h"
 
+void loadTextures();
+void startNewGame();
+
+sf::Texture menuBackgroundTexture;
+sf::Texture grassFieldTexture;
+sf::Texture coalFieldTexture;
+sf::Texture ironOreFieldTexture;
+sf::Texture ironOreMineFieldTexture;
+
+GameState gameState = GameState::titleMenu;
+
+//TODO map
+int map[];
+
+
 int main() {
 	
 	//create window
 	sf::RenderWindow window(sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(60);		//set frame limit to 60 fps
     
-	GameState gameState = GameState::titleMenu;
 	Menu titleMenu(window);
 
-	sf::Texture menuBackground;
-	
-	menuBackground.loadFromFile("images/steel_background.jpg");
-	titleMenu.setBackground(menuBackground);
+	//laden der texturen
+	loadTextures();
+
+	titleMenu.setBackground(menuBackgroundTexture);
 	
 	titleMenu.addMenuButton("Neues Spiel", 150, 50);
 	titleMenu.addMenuButton("Spiel Laden", 150, 50);
 	titleMenu.addMenuButton("Spiel Beenden", 150, 50);
 	
     sf::Time time;
-    
     sf::Clock dT;
 
+	//Gameloop
     while (window.isOpen()) {
         sf::Event event;
       
+		//umwandlung von int in float
 		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 		sf::Vector2f mousePosF = sf::Vector2f(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 
@@ -59,7 +74,7 @@ int main() {
 
 						//Neues Spiel starten
 						if (clickedButton == "Neues Spiel") {
-							
+							startNewGame();
 
 						}
 
@@ -125,3 +140,27 @@ int main() {
     
     return EXIT_SUCCESS ;
 }
+
+//lade texturen
+void loadTextures() {
+	cout << "Loading textures ";
+	menuBackgroundTexture.loadFromFile("images/steel_background.jpg");
+	cout << ".";
+	grassFieldTexture.loadFromFile("images/grassField.png");
+	cout << ".";
+	coalFieldTexture.loadFromFile("images/coalField.png");
+	cout << ".";
+	ironOreFieldTexture.loadFromFile("images/iron_oreField.png");
+	cout << ".";
+	ironOreMineFieldTexture.loadFromFile("images/ironOreMineField.png");
+	cout << ".";
+
+
+}
+
+//neues spiel starten
+void startNewGame() {
+
+	gameState = GameState::playing;
+}
+
