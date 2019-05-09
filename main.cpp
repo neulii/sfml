@@ -17,8 +17,20 @@ sf::Texture ironOreMineFieldTexture;
 
 GameState gameState = GameState::titleMenu;
 
-//TODO map
-int map[];
+
+
+
+vector<int> map  { 
+					0,0,0,0,0,0,0,0,0,0,
+					0,0,0,0,0,0,0,0,0,0, 
+					0,0,0,0,0,0,0,0,0,0, 
+					0,0,0,0,0,0,0,0,0,0, 
+					0,0,0,0,0,0,0,0,0,0, 
+					0,0,0,0,0,0,0,0,0,0, 
+					0,0,0,0,0,0,0,0,0,0, 
+					0,0,0,0,0,0,0,0,0,0
+};	
+
 
 
 int main() {
