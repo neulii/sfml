@@ -5,6 +5,7 @@
 #include "GameState.h"
 #include "MenuButton.h"
 #include "Menu.h"
+#include "Map.h"
 
 void loadTextures();
 void startNewGame();
@@ -17,21 +18,7 @@ sf::Texture ironOreMineFieldTexture;
 
 GameState gameState = GameState::titleMenu;
 
-
-
-
-vector<int> map  { 
-					0,0,0,0,0,0,0,0,0,0,
-					0,0,0,0,0,0,0,0,0,0, 
-					0,0,0,0,0,0,0,0,0,0, 
-					0,0,0,0,0,0,0,0,0,0, 
-					0,0,0,0,0,0,0,0,0,0, 
-					0,0,0,0,0,0,0,0,0,0, 
-					0,0,0,0,0,0,0,0,0,0, 
-					0,0,0,0,0,0,0,0,0,0
-};	
-
-
+Map map;
 
 int main() {
 	
