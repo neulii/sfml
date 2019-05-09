@@ -3,6 +3,7 @@
 
 enum FieldType
 {
+	grassField,
 	coalField,
 	ironOreField,
 	ironOreMineField,
