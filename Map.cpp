@@ -2,9 +2,16 @@
 
 
 
-Map::Map()
+Map::Map(unsigned int blocksX, unsigned int blocksY)
 {
+	this->blocksX = blocksX;
+	this->blocksY = blocksY;
 
+	int numberofFields = blocksX * blocksY;
+
+	for (int i = 0; i < numberofFields; i++) {
+		mapString.push_back(FieldType::grassField);
+	}
 
 }
 
