@@ -22,10 +22,8 @@ public:
 	void printMapToConsole();
 	FieldType getFieldType(unsigned posX, unsigned posY);
 	void setFieldType(FieldType type, unsigned posX, unsigned posY);
-
 	vector<unsigned int>lineToCoord(unsigned linePos);
-	unsigned lineToCoord(vector<unsigned> coord);
-
+	unsigned coordToLine(unsigned posX, unsigned posY);
 	~Map();
 };
 

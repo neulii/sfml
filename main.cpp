@@ -25,11 +25,6 @@ Map gameMap(10,10);
 
 int main() {
 
-	gameMap.setFieldType(FieldType::coalField, 0, 0);
-
-
-	gameMap.printMapToConsole();
-
 	//create window
 	sf::RenderWindow window(sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(60);		//set frame limit to 60 fps

@@ -28,8 +28,10 @@ void Map::printMapToConsole()
 }
 
 FieldType Map::getFieldType(unsigned posX, unsigned posY) {
-	//TODO gehört noch ausprogrammiert
-	return static_cast<FieldType>(mapString.at(posX));
+	
+
+	return mapString.at(coordToLine(posX, posY));
+	
 }
 
 vector<unsigned int> Map::lineToCoord(unsigned linePos) {
@@ -45,14 +47,18 @@ vector<unsigned int> Map::lineToCoord(unsigned linePos) {
 	return coord;
 }
 
-unsigned Map::lineToCoord(vector<unsigned> coord) {
+unsigned Map::coordToLine(unsigned posX, unsigned posY) {
+	
+
+	unsigned lineCoord = posY * blocksX + posX;
+
+	return lineCoord;
 
 }
 
 void Map::setFieldType(FieldType type, unsigned posX, unsigned posY) {
 
-	
-
+	mapString.at(coordToLine(posX, posY)) = type;
 }
 
 Map::~Map()
