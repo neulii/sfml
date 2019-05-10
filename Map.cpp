@@ -48,18 +48,28 @@ vector<unsigned int> Map::lineToCoord(unsigned linePos) {
 }
 
 unsigned Map::coordToLine(unsigned posX, unsigned posY) {
-	
 
 	unsigned lineCoord = posY * blocksX + posX;
 
 	return lineCoord;
-
 }
 
 void Map::setFieldType(FieldType type, unsigned posX, unsigned posY) {
 
 	mapString.at(coordToLine(posX, posY)) = type;
 }
+
+void Map::setMapString(vector<FieldType>& mapString){
+	this->mapString = mapString;
+	cout << &this->mapString << "     " << &mapString;
+
+}
+
+vector<FieldType> Map::getMapString()
+{
+	return this->mapString;
+}
+
 
 Map::~Map()
 {

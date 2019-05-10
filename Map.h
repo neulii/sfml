@@ -24,6 +24,9 @@ public:
 	void setFieldType(FieldType type, unsigned posX, unsigned posY);
 	vector<unsigned int>lineToCoord(unsigned linePos);
 	unsigned coordToLine(unsigned posX, unsigned posY);
+	void setMapString(vector<FieldType> &mapString);
+	vector<FieldType> getMapString();
+
 	~Map();
 };
 
