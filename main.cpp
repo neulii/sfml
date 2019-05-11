@@ -29,13 +29,12 @@ int main() {
 	sf::RenderWindow window(sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(60);		//set frame limit to 60 fps
     
-	Menu titleMenu(window);
-
 	//laden der texturen
 	loadTextures();
 
+	//Menue erstellen
+	Menu titleMenu(window);
 	titleMenu.setBackground(menuBackgroundTexture);
-	
 	titleMenu.addMenuButton("Neues Spiel", 150, 50);
 	titleMenu.addMenuButton("Spiel Laden", 150, 50);
 	titleMenu.addMenuButton("Spiel Beenden", 150, 50);
