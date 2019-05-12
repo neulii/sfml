@@ -17,11 +17,11 @@ class Tile : public GameObject
 		sf::Texture texture;
 		sf::Sprite tileSprite;
 
-		FieldType fieldType;
+		//FieldType fieldType;
 
 	public:
-		Tile(FieldType fieldType, int x, int y, sf::Texture texture);
-
+		//Tile(FieldType fieldType, int x, int y, sf::Texture texture);
+		Tile(int x, int y, sf::Texture texture);
 		void render(sf::RenderWindow &window);
 		void update(long dT);
 	

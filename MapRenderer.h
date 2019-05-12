@@ -1,7 +1,7 @@
 #ifndef MAPRENDERER_H
 #define MAPRENDERER_H
 
-
+#include "GameMap.h"
 #include "GameObject.h"
 
 class MapRenderer : public GameObject

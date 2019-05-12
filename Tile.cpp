@@ -1,12 +1,12 @@
 #include "Tile.h"
 #include <iostream>
 
-Tile::Tile(FieldType fieldType, int x, int y, sf::Texture texture) {
-
+//Tile::Tile(FieldType fieldType, int x, int y, sf::Texture texture) {
+Tile::Tile(int x, int y, sf::Texture texture) {
 	this->x = x;
 	this->y = y;
 	this->texture = texture;
-	this->fieldType = fieldType;
+	//this->fieldType = fieldType;
 	this->width = texture.getSize().x;
 	this->height = texture.getSize().y;
 

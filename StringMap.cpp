@@ -1,4 +1,4 @@
-#include "Map.h"
+#include "StringMap.h"
 
 StringMap::StringMap(unsigned int blocksX, unsigned int blocksY)
 {
