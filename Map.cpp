@@ -1,6 +1,6 @@
 #include "Map.h"
 
-Map::Map(unsigned int blocksX, unsigned int blocksY)
+StringMap::StringMap(unsigned int blocksX, unsigned int blocksY)
 {
 	this->blocksX = blocksX;
 	this->blocksY = blocksY;
@@ -13,7 +13,7 @@ Map::Map(unsigned int blocksX, unsigned int blocksY)
 	}
 }
 
-void Map::printMapToConsole()
+void StringMap::printMapToConsole()
 {
 	cout << "============   MapString  ============"<< endl;
 	
@@ -27,14 +27,14 @@ void Map::printMapToConsole()
 	cout << endl << endl <<  "========  end of MapString    ========" << endl << endl;
 }
 
-FieldType Map::getFieldType(unsigned posX, unsigned posY) {
+FieldType StringMap::getFieldType(unsigned posX, unsigned posY) {
 	
 
 	return mapString.at(coordToLine(posX, posY));
 	
 }
 
-vector<unsigned int> Map::lineToCoord(unsigned linePos) {
+vector<unsigned int> StringMap::lineToCoord(unsigned linePos) {
 
 	vector<unsigned> coord;
 	
@@ -47,30 +47,30 @@ vector<unsigned int> Map::lineToCoord(unsigned linePos) {
 	return coord;
 }
 
-unsigned Map::coordToLine(unsigned posX, unsigned posY) {
+unsigned StringMap::coordToLine(unsigned posX, unsigned posY) {
 
 	unsigned lineCoord = posY * blocksX + posX;
 
 	return lineCoord;
 }
 
-void Map::setFieldType(FieldType type, unsigned posX, unsigned posY) {
+void StringMap::setFieldType(FieldType type, unsigned posX, unsigned posY) {
 
 	mapString.at(coordToLine(posX, posY)) = type;
 }
 
-void Map::setMapString(vector<FieldType>& mapString){
+void StringMap::setMapString(vector<FieldType>& mapString){
 	this->mapString = mapString;
 	cout << &this->mapString << "     " << &mapString;
 
 }
 
-vector<FieldType> Map::getMapString()
+vector<FieldType> StringMap::getMapString()
 {
 	return this->mapString;
 }
 
 
-Map::~Map()
+StringMap::~StringMap()
 {
 }

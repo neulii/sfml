@@ -18,7 +18,8 @@ sf::Texture ironOreMineFieldTexture;
 
 GameState gameState = GameState::titleMenu;
 
-Map gameMap(10,10);
+
+StringMap gameMap(10,10);
 
 
 

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Map
+class StringMap
 {
 private:
 	vector <FieldType> mapString;
@@ -17,17 +17,17 @@ private:
 	unsigned int blocksY = 0;
 
 public:
-	Map(unsigned int blocksX, unsigned int blocksY);
+	StringMap(unsigned int blocksX, unsigned int blocksY);
 
-	void printMapToConsole();
-	FieldType getFieldType(unsigned posX, unsigned posY);
-	void setFieldType(FieldType type, unsigned posX, unsigned posY);
-	vector<unsigned int>lineToCoord(unsigned linePos);
-	unsigned coordToLine(unsigned posX, unsigned posY);
-	void setMapString(vector<FieldType> &mapString);
-	vector<FieldType> getMapString();
+	void					printMapToConsole();
+	FieldType				getFieldType(unsigned posX, unsigned posY);
+	void					setFieldType(FieldType type, unsigned posX, unsigned posY);
+	vector<unsigned int>	lineToCoord(unsigned linePos);
+	unsigned				coordToLine(unsigned posX, unsigned posY);
+	void					setMapString(vector<FieldType> &mapString);
+	vector<FieldType>		getMapString();
 
-	~Map();
+	~StringMap();
 };
 
 #endif // !MAP_H
