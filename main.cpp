@@ -33,6 +33,8 @@ int main() {
 	//laden der texturen
 	loadTextures();
 
+	Tile test(100, 100, ironOreMineFieldTexture);
+
 	//Menue erstellen
 	Menu titleMenu(window);
 	titleMenu.setBackground(menuBackgroundTexture);
@@ -132,6 +134,7 @@ int main() {
 			break;
 
 		case GameState::playing:
+			test.render(window);
 
 			
 
