@@ -1,6 +1,6 @@
 #include "MapRenderer.h"
 
-MapRenderer::MapRenderer(sf::RenderWindow& window, GameMap &map)
+MapRenderer::MapRenderer(GameMap &map)
 {
 }
 

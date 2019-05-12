@@ -7,7 +7,7 @@
 class MapRenderer : public GameObject
 {
 public:
-	MapRenderer(sf::RenderWindow &window, GameMap &map);
+	MapRenderer(GameMap &map);
 
 	void update(long dT);
 	void render(sf::RenderWindow &window);
