@@ -5,7 +5,7 @@
 #include "GameState.h"
 #include "MenuButton.h"
 #include "Menu.h"
-#include "Map.h"
+#include "StringMap.h"
 
 void loadTextures();
 void startNewGame();
@@ -120,7 +120,7 @@ int main() {
 
         window.clear();		//clear screen
        
-        //draw objects
+        //rendering objects
 		
 		switch (gameState)
 		{
@@ -129,6 +129,16 @@ int main() {
 
 			titleMenu.render(window);
 		
+			break;
+
+		case GameState::playing:
+
+			
+
+			break;
+
+		case GameState::pausedMenu:
+
 			break;
 		
 		default:
