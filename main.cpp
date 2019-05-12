@@ -6,6 +6,7 @@
 #include "MenuButton.h"
 #include "Menu.h"
 #include "StringMap.h"
+#include "ProductionTile.h"
 
 void loadTextures();
 void startNewGame();
@@ -33,7 +34,7 @@ int main() {
 	//laden der texturen
 	loadTextures();
 
-	Tile test(100, 100, ironOreMineFieldTexture);
+	ProductionTile test(FieldType::coalMineField, 100, 100, ironOreMineFieldTexture);
 
 	//Menue erstellen
 	Menu titleMenu(window);

@@ -2,7 +2,7 @@
 #include <iostream>
 
 //Tile::Tile(FieldType fieldType, int x, int y, sf::Texture texture) {
-Tile::Tile(int x, int y, sf::Texture texture) {
+Tile::Tile(int x, int y, sf::Texture &texture) {
 	this->x = x;
 	this->y = y;
 	this->texture = texture;

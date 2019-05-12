@@ -1,5 +1,5 @@
 #ifndef TILE_H
-#define TilE_H
+#define TILE_H
 
 #include "GameObject.h"
 #include "FieldType.h"
@@ -21,7 +21,7 @@ class Tile : public GameObject
 
 	public:
 		//Tile(FieldType fieldType, int x, int y, sf::Texture texture);
-		Tile(int x, int y, sf::Texture texture);
+		Tile(int x, int y, sf::Texture &texture);
 		void render(sf::RenderWindow &window);
 		void update(long dT);
 	
