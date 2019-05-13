@@ -39,6 +39,7 @@ int main() {
 	//laden der texturen
 	loadTextures();
 	gameMap = new GameMap(stringMap, fieldTextureMap);
+	
 	ProductionTile test(FieldType::coalMineField, 100, 100, ironOreMineFieldTexture);
 
 	//Menue erstellen
