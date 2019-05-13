@@ -34,6 +34,10 @@ FieldType StringMap::getFieldType(unsigned posX, unsigned posY) {
 	
 }
 
+FieldType StringMap::getFieldType(unsigned posLinear) {
+	return mapString.at(posLinear);
+}
+
 vector<unsigned int> StringMap::lineToCoord(unsigned linePos) {
 
 	vector<unsigned> coord;
@@ -68,6 +72,10 @@ void StringMap::setMapString(vector<FieldType>& mapString){
 vector<FieldType> StringMap::getMapString()
 {
 	return this->mapString;
+}
+
+unsigned StringMap::getMapSize() {
+	return this->mapString.size();
 }
 
 

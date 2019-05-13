@@ -3,12 +3,12 @@
 
 enum FieldType
 {
-	grassField,
-	coalField,
-	ironOreField,
-	ironOreMineField,
-	coalMineField,
-	rawIronProduction
+	grassField = 0,
+	coalField = 1,
+	ironOreField = 2,
+	ironOreMineField = 3,
+	coalMineField = 4,
+	rawIronProduction = 5
 };
 
 

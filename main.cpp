@@ -7,6 +7,9 @@
 #include "Menu.h"
 #include "StringMap.h"
 #include "ProductionTile.h"
+#include <set>
+#include "Types.h"
+#include "GameMap.h"
 
 void loadTextures();
 void startNewGame();
@@ -17,12 +20,14 @@ sf::Texture coalFieldTexture;
 sf::Texture ironOreFieldTexture;
 sf::Texture ironOreMineFieldTexture;
 
+FieldTextureMap fieldTextureMap;
+
+
 GameState gameState = GameState::titleMenu;
 
 
-StringMap gameMap(10,10);
-
-
+StringMap stringMap(10,10);
+GameMap *gameMap;
 
 
 int main() {
@@ -33,7 +38,7 @@ int main() {
     
 	//laden der texturen
 	loadTextures();
-
+	gameMap = new GameMap(stringMap, fieldTextureMap);
 	ProductionTile test(FieldType::coalMineField, 100, 100, ironOreMineFieldTexture);
 
 	//Menue erstellen
@@ -170,6 +175,10 @@ void loadTextures() {
 	cout << ".";
 	ironOreMineFieldTexture.loadFromFile("images/ironOreMineField.png");
 	cout << ".";
+
+	fieldTextureMap.insert(make_pair(0,grassFieldTexture));
+	fieldTextureMap.insert(make_pair(1, coalFieldTexture));
+	fieldTextureMap.insert(make_pair(2, ironOreFieldTexture));
 
 
 }

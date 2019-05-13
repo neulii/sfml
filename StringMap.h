@@ -17,15 +17,18 @@ private:
 	unsigned int blocksY = 0;
 
 public:
+	//StringMap(StringMap& stringMap);
 	StringMap(unsigned int blocksX, unsigned int blocksY);
 
 	void					printMapToConsole();
 	FieldType				getFieldType(unsigned posX, unsigned posY);
+	FieldType				getFieldType(unsigned posLinear);
 	void					setFieldType(FieldType type, unsigned posX, unsigned posY);
 	vector<unsigned int>	lineToCoord(unsigned linePos);
 	unsigned				coordToLine(unsigned posX, unsigned posY);
 	void					setMapString(vector<FieldType> &mapString);
 	vector<FieldType>		getMapString();
+	unsigned				getMapSize();
 
 	~StringMap();
 };
