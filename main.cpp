@@ -34,7 +34,7 @@ FieldTextureMap fieldTextureMap;
 GameState gameState = GameState::titleMenu;
 
 
-StringMap stringMap(10,10);
+StringMap stringMap(100,100);
 GameMap *gameMap;
 MapRenderer *mapRenderer;
 
