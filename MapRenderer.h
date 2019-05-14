@@ -6,6 +6,9 @@
 
 class MapRenderer : public GameObject
 {
+private:
+	GameMap* map;
+
 public:
 	MapRenderer(GameMap &map);
 

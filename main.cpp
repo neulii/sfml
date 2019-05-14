@@ -10,6 +10,7 @@
 #include <set>
 #include "Types.h"
 #include "GameMap.h"
+#include "MapRenderer.h"
 
 void loadTextures();
 void startNewGame();
@@ -28,6 +29,7 @@ GameState gameState = GameState::titleMenu;
 
 StringMap stringMap(10,10);
 GameMap *gameMap;
+MapRenderer *mapRenderer;
 
 
 int main() {
@@ -39,7 +41,7 @@ int main() {
 	//laden der texturen
 	loadTextures();
 	gameMap = new GameMap(stringMap, fieldTextureMap);
-	
+	mapRenderer = new MapRenderer(*gameMap);
 	ProductionTile test(FieldType::coalMineField, 100, 100, ironOreMineFieldTexture);
 
 	//Menue erstellen
@@ -141,6 +143,7 @@ int main() {
 			break;
 
 		case GameState::playing:
+			mapRenderer->render(window);
 			test.render(window);
 
 			

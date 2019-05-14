@@ -10,12 +10,17 @@ class GameMap
 {
 private:
 	std::vector<ProductionTile*> gameMap;
-	StringMap *stringMap;
+	StringMap *stringMap = 0;
 
 
 public:
 	/*GameMap(StringMap &stringMap);*/
 	GameMap(StringMap& stringMap,FieldTextureMap &textureMap);
+
+	ProductionTile* getTileAt(unsigned pos);
+	unsigned getSize();
+	
+
 
 	~GameMap();
 };
