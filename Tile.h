@@ -7,6 +7,8 @@ class Tile : public GameObject
 {
 	private: 
 
+		static unsigned tileCounter;
+
 		int x;
 		int y;
 		int width;
@@ -14,7 +16,7 @@ class Tile : public GameObject
 
 		sf::RectangleShape rect;
 
-		sf::Texture texture;
+		sf::Texture *texture;
 		sf::Sprite tileSprite;
 
 		//FieldType fieldType;

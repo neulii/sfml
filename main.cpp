@@ -15,6 +15,7 @@
 void loadTextures();
 void startNewGame();
 
+
 sf::Texture menuBackgroundTexture;
 sf::Texture grassFieldTexture;
 sf::Texture coalFieldTexture;
@@ -27,20 +28,24 @@ FieldTextureMap fieldTextureMap;
 GameState gameState = GameState::titleMenu;
 
 
-StringMap stringMap(10,10);
+StringMap stringMap(200,200);
 GameMap *gameMap;
 MapRenderer *mapRenderer;
 
+unsigned Tile::tileCounter = 0;
 
 int main() {
 
+	
 	//create window
 	sf::RenderWindow window(sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(60);		//set frame limit to 60 fps
     
 	//laden der texturen
 	loadTextures();
+	std::cout << "create GameMap" << endl;
 	gameMap = new GameMap(stringMap, fieldTextureMap);
+	
 	mapRenderer = new MapRenderer(*gameMap);
 	ProductionTile test(FieldType::coalMineField, 100, 100, ironOreMineFieldTexture);
 

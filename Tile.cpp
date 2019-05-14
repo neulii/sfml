@@ -3,9 +3,13 @@
 
 //Tile::Tile(FieldType fieldType, int x, int y, sf::Texture texture) {
 Tile::Tile(int x, int y, sf::Texture &texture) {
+
+	tileCounter++;
+	//std::cout << tileCounter << std::endl;
+
 	this->x = x;
 	this->y = y;
-	this->texture = texture;
+	this->texture = &texture;
 	//this->fieldType = fieldType;
 	this->width = texture.getSize().x;
 	this->height = texture.getSize().y;
@@ -14,7 +18,7 @@ Tile::Tile(int x, int y, sf::Texture &texture) {
 
 	rect.setPosition(x, y);
 
-	tileSprite.setTexture(this->texture);
+	tileSprite.setTexture(*this->texture);
 	tileSprite.setPosition(x, y);
 }
 
@@ -32,5 +36,6 @@ void Tile::update(long dT) {
 
 Tile::~Tile()
 {
-
+	tileCounter--;
+	//std::cout << tileCounter << std::endl;
 }
