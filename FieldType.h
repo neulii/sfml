@@ -5,10 +5,10 @@ enum FieldType
 {
 	grassField = 0,
 	coalField = 1,
-	ironOreField = 2,
-	ironOreMineField = 3,
-	coalMineField = 4,
-	rawIronProduction = 5
+	coalMineField = 2,
+	ironOreField = 3,
+	ironOreMineField = 4,
+	furnaceField= 5
 };
 
 

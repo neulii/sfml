@@ -17,10 +17,16 @@ void startNewGame();
 
 
 sf::Texture menuBackgroundTexture;
+
 sf::Texture grassFieldTexture;
+
+sf::Texture coalMineFieldTexture;
 sf::Texture coalFieldTexture;
+
 sf::Texture ironOreFieldTexture;
 sf::Texture ironOreMineFieldTexture;
+
+sf::Texture furnaceFieldTexture;
 
 FieldTextureMap fieldTextureMap;
 
@@ -28,10 +34,11 @@ FieldTextureMap fieldTextureMap;
 GameState gameState = GameState::titleMenu;
 
 
-StringMap stringMap(200,200);
+StringMap stringMap(10,10);
 GameMap *gameMap;
 MapRenderer *mapRenderer;
 
+//counter from TileClass 
 unsigned Tile::tileCounter = 0;
 
 int main() {
@@ -43,9 +50,16 @@ int main() {
     
 	//laden der texturen
 	loadTextures();
+	stringMap.setFieldType(FieldType::furnaceField, 0, 0);
+	//stringMap.setFieldType(FieldType::coalMineField, 0, 0);
+
 	std::cout << "create GameMap" << endl;
 	gameMap = new GameMap(stringMap, fieldTextureMap);
-	
+	std::cout << "gameMap created   " << sizeof(gameMap)<< endl;
+
+
+
+
 	mapRenderer = new MapRenderer(*gameMap);
 	ProductionTile test(FieldType::coalMineField, 100, 100, ironOreMineFieldTexture);
 
@@ -180,15 +194,21 @@ void loadTextures() {
 	cout << ".";
 	coalFieldTexture.loadFromFile("images/coalField.png");
 	cout << ".";
+	coalMineFieldTexture.loadFromFile("images/coalMineField.png");
+	cout << ".";
 	ironOreFieldTexture.loadFromFile("images/iron_oreField.png");
 	cout << ".";
 	ironOreMineFieldTexture.loadFromFile("images/ironOreMineField.png");
 	cout << ".";
+	furnaceFieldTexture.loadFromFile("images/furnaceField.png");
+	cout << ".";
 
-	fieldTextureMap.insert(make_pair(0,grassFieldTexture));
+	fieldTextureMap.insert(make_pair(0, grassFieldTexture));
 	fieldTextureMap.insert(make_pair(1, coalFieldTexture));
-	fieldTextureMap.insert(make_pair(2, ironOreFieldTexture));
-
+	fieldTextureMap.insert(make_pair(2, coalMineFieldTexture));
+	fieldTextureMap.insert(make_pair(3, ironOreFieldTexture));
+	fieldTextureMap.insert(make_pair(4, ironOreMineFieldTexture));
+	fieldTextureMap.insert(make_pair(5,	furnaceFieldTexture));
 
 }
 

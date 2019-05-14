@@ -5,6 +5,8 @@ GameMap::GameMap(StringMap& stringMap, FieldTextureMap& textureMap)
 {
 	this->stringMap = &stringMap;
 
+	//create tiles for gamemap
+
 	for (int i = 0; i < this->stringMap->getMapSize(); i++) {
 		
 		//position der bloecke ermitteln
@@ -17,7 +19,7 @@ GameMap::GameMap(StringMap& stringMap, FieldTextureMap& textureMap)
 		
 		//tile erstellen
 		gameMap.push_back(new ProductionTile(this->stringMap->getFieldType(i), posX, posY, textureMap.at(this->stringMap->getFieldType(i))));
-		
+		//cout << "fieldType: " << this->stringMap->getFieldType(i) << endl;
 
 	}
 }
