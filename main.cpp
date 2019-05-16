@@ -33,8 +33,22 @@ FieldTextureMap fieldTextureMap;
 
 GameState gameState = GameState::titleMenu;
 
-
 StringMap stringMap(100,100);
+
+vector<int> myMap{ 0,0,1,0,0,0,0,0,0,0,
+				   0,0,0,0,0,0,0,0,0,0,
+				   0,0,0,0,0,0,0,0,0,0,
+				   0,0,0,0,0,0,0,0,0,0,
+				   4,2,1,0,0,0,0,0,0,0,
+				   0,0,0,0,0,0,0,0,0,0,
+				   0,5,0,0,0,0,3,0,0,0,
+				   0,0,0,0,0,0,3,0,0,0,
+				   0,0,0,0,0,0,0,0,0,0,
+				   0,0,0,0,0,0,0,0,0,0
+};
+
+StringMap myStringMap(10, 10, myMap);
+
 GameMap *gameMap;
 MapRenderer *mapRenderer;
 
@@ -50,18 +64,12 @@ int main() {
     
 	//laden der texturen
 	loadTextures();
-	stringMap.setFieldType(FieldType::furnaceField, 0, 0);
-	//stringMap.setFieldType(FieldType::coalMineField, 0, 0);
-
+	
 	std::cout << "create GameMap" << endl;
-	gameMap = new GameMap(stringMap, fieldTextureMap);
-	std::cout << "gameMap created   " << sizeof(gameMap)<< endl;
-
-
-
+	gameMap = new GameMap(myStringMap, fieldTextureMap);
+	std::cout << "gameMap created   " << endl;
 
 	mapRenderer = new MapRenderer(*gameMap);
-	ProductionTile test(FieldType::coalMineField, 100, 100, ironOreMineFieldTexture);
 
 	//Menue erstellen
 	Menu titleMenu(window);
@@ -162,10 +170,7 @@ int main() {
 			break;
 
 		case GameState::playing:
-			mapRenderer->render(window);
-			test.render(window);
-
-			
+			mapRenderer->render(window);			
 
 			break;
 

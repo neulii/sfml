@@ -13,6 +13,17 @@ StringMap::StringMap(unsigned int blocksX, unsigned int blocksY)
 	}
 }
 
+StringMap::StringMap(unsigned int blocksX, unsigned int blocksY, vector<int> mapString)
+{
+	this->blocksX = blocksX;
+	this->blocksY = blocksY;
+
+	for (int i = 0; i < mapString.size(); i++) {
+		this->mapString.push_back(static_cast<FieldType>(mapString.at(i)));
+
+	}
+}
+
 void StringMap::printMapToConsole()
 {
 	cout << "============   MapString  ============"<< endl;

@@ -17,8 +17,9 @@ private:
 	unsigned int blocksY = 0;
 
 public:
-	//StringMap(StringMap& stringMap);
+	
 	StringMap(unsigned int blocksX, unsigned int blocksY);
+	StringMap(unsigned int blocksX, unsigned int blocksY, vector<int> mapString);
 
 	void					printMapToConsole();
 	FieldType				getFieldType(unsigned posX, unsigned posY);
