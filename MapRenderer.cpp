@@ -20,6 +20,8 @@ void MapRenderer::render(sf::RenderWindow& window)
 }
 
 
+
+
 MapRenderer::~MapRenderer()
 {
 }

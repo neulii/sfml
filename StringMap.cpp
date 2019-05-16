@@ -18,9 +18,13 @@ StringMap::StringMap(unsigned int blocksX, unsigned int blocksY, vector<int> map
 	this->blocksX = blocksX;
 	this->blocksY = blocksY;
 
+	//wenn mapgroesse nicht mit angegebnen feldern uebereinstimmt wird fehler geworfen
+	if (blocksX * blocksY != mapString.size()) {
+		throw "check Parameter of MapString!!";
+	}
+
 	for (int i = 0; i < mapString.size(); i++) {
 		this->mapString.push_back(static_cast<FieldType>(mapString.at(i)));
-
 	}
 }
 

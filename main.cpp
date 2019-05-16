@@ -90,14 +90,48 @@ int main() {
 		sf::Vector2f mousePosF = sf::Vector2f(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 
 		string clickedButton = "none";
+			
+		//check key's 
+
+		switch (gameState) {
+
+			//wile Ingame
+			case GameState::playing:
+				//LEFT
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
+						cout << "left";
+				}
+
+				//Right
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+					cout << "right";
+				}
+
+				//Up
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+					cout << "UP";
+				}
+
+				//Down
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+					cout << "down";
+				}
+
+				break;
+		}
+		
 
         while(window.pollEvent(event)){
+
+
+
             switch (event.type){
                 case sf::Event::Closed:
                     
                     window.close();
-                    break;
-      
+                    break;	
+
+
 				case sf::Event::MouseMoved:
 
 					titleMenu.setMousePos(mousePosF);
