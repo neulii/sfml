@@ -160,27 +160,38 @@ int main() {
 
 			//wile Ingame
 		case GameState::playing:
+			
 			//LEFT
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				mapRenderer->moveLeft(timeElapsed);
-				//cout << timeElapsed << endl;
+				mapRenderer->moveLeft(true);
+				
 			}
+			else {
+				mapRenderer->moveLeft(false);
+			}
+
+			
 
 			//Right
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-				mapRenderer->moveRight(timeElapsed);
-				//cout << "right";
+				mapRenderer->moveRight(true);
 			}
+			else
+				mapRenderer->moveRight(false);
 
 			//Up
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-				cout << "UP";
+				mapRenderer->moveUp(true);
 			}
+			else
+				mapRenderer->moveUp(false);
 
 			//Down
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-				cout << "down";
+				mapRenderer->moveDown(true);
 			}
+			else
+				mapRenderer->moveDown(false);
 
 			break;
 		}

@@ -8,10 +8,13 @@ class MapRenderer : public GameObject
 {
 private:
 	GameMap* map;
-	int offSetX = 0;
-	int offSetY = 0;
-	float scrollSpeed = 1;
+
+	float scrollSpeed = 0.5;
 	
+	bool movingLeft = false;
+	bool movingRight = false;
+	bool movingUp = false;
+	bool movingDown = false;
 
 
 
@@ -21,10 +24,10 @@ public:
 	void update(long dT);
 	void render(sf::RenderWindow &window);
 
-	void moveLeft(long dT);
-	void moveRight(long dT);
-	void moveUp(long dT);
-	void moveDown(long dT);
+	void moveLeft(bool movingLeft);
+	void moveRight(bool movingRight);
+	void moveUp(bool movingUp);
+	void moveDown(bool movingDown);
 
 
 
