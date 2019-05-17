@@ -19,7 +19,6 @@ public:
 
 	ProductionTile* getTileAt(unsigned pos);
 	unsigned getSize();
-	
 
 
 	~GameMap();

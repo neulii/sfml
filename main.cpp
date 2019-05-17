@@ -91,34 +91,6 @@ int main() {
 
 		string clickedButton = "none";
 			
-		//check key's 
-
-		switch (gameState) {
-
-			//wile Ingame
-			case GameState::playing:
-				//LEFT
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-						cout << "left";
-				}
-
-				//Right
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-					cout << "right";
-				}
-
-				//Up
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-					cout << "UP";
-				}
-
-				//Down
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-					cout << "down";
-				}
-
-				break;
-		}
 		
 
         while(window.pollEvent(event)){
@@ -182,6 +154,37 @@ int main() {
         time = dT.getElapsedTime();
         long timeElapsed = time.asMilliseconds();
         
+		//check key's 
+
+		switch (gameState) {
+
+			//wile Ingame
+		case GameState::playing:
+			//LEFT
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+				mapRenderer->moveLeft(timeElapsed);
+				//cout << timeElapsed << endl;
+			}
+
+			//Right
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+				mapRenderer->moveRight(timeElapsed);
+				//cout << "right";
+			}
+
+			//Up
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+				cout << "UP";
+			}
+
+			//Down
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+				cout << "down";
+			}
+
+			break;
+		}
+
      
   
         //update game logic
@@ -189,6 +192,7 @@ int main() {
 		
 
 		titleMenu.update(timeElapsed);
+		mapRenderer->update(timeElapsed);
 
         window.clear();		//clear screen
        

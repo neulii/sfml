@@ -33,6 +33,10 @@ void Tile::update(long dT) {
 
 }
 
+sf::Sprite* Tile::getSprite()
+{
+	return &tileSprite;
+}
 
 Tile::~Tile()
 {

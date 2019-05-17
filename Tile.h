@@ -26,7 +26,7 @@ class Tile : public GameObject
 		Tile(int x, int y, sf::Texture &texture);
 		void render(sf::RenderWindow &window);
 		void update(long dT);
-	
+		sf::Sprite* getSprite();
 		~Tile();
 	};
 
