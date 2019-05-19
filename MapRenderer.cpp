@@ -8,39 +8,26 @@ MapRenderer::MapRenderer(GameMap &map)
 
 void MapRenderer::update(long dT)
 {
-	if (movingLeft) {
-		for (int i = 0; i < map->getSize(); i++) {
+	for (int i = 0; i < map->getSize(); i++) {
+		
+		sf::Sprite* sprite = map->getTileAt(i)->getSprite();
 
-			sf::Sprite* sprite = map->getTileAt(i)->getSprite();
-			sprite->move(scrollSpeed*dT, 0);
-			
+		if (movingLeft) {
+			sprite->move(scrollSpeed * dT, 0);
 		}
 
-	}
-	if (movingRight) {
-		for (int i = 0; i < map->getSize(); i++) {
-
-			sf::Sprite* sprite = map->getTileAt(i)->getSprite();
-			sprite->move(-scrollSpeed * dT, 0);
-
+		if (movingRight) {	
+				sprite->move(-scrollSpeed * dT, 0);
 		}
-	}
-	if (movingUp) {
-		for (int i = 0; i < map->getSize(); i++) {
 
-			sf::Sprite* sprite = map->getTileAt(i)->getSprite();
-			sprite->move(0,scrollSpeed * dT);
+		if (movingUp) {
+			sprite->move(0, scrollSpeed * dT);
+		}
 
+		if (movingDown) {
+				sprite->move(0, -scrollSpeed * dT);
 		}
 	}
-	if (movingDown) {
-		for (int i = 0; i < map->getSize(); i++) {
-
-			sf::Sprite* sprite = map->getTileAt(i)->getSprite();
-			sprite->move(0, -scrollSpeed * dT);
-
-		}
-	}	
 }
 
 
