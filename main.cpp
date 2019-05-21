@@ -15,7 +15,7 @@
 void loadTextures();
 void startNewGame();
 
-
+sf::RenderWindow* window;
 sf::Texture menuBackgroundTexture;
 
 sf::Texture grassFieldTexture;
@@ -29,7 +29,6 @@ sf::Texture ironOreMineFieldTexture;
 sf::Texture furnaceFieldTexture;
 
 FieldTextureMap fieldTextureMap;
-
 
 GameState gameState = GameState::titleMenu;
 
@@ -69,8 +68,8 @@ int main() {
 
 	
 	//create window
-	sf::RenderWindow window(sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
-    window.setFramerateLimit(60);		//set frame limit to 60 fps
+	window = new sf::RenderWindow (sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
+    window->setFramerateLimit(60);		//set frame limit to 60 fps
     
 	//laden der texturen
 	loadTextures();
@@ -79,10 +78,10 @@ int main() {
 	gameMap = new GameMap(myStringMap, fieldTextureMap);
 	std::cout << "gameMap created   " << endl;
 
-	mapRenderer = new MapRenderer(*gameMap, window);
+	mapRenderer = new MapRenderer(*gameMap, *window);
 
 	//Menue erstellen
-	Menu titleMenu(window);
+	Menu titleMenu(*window);
 	titleMenu.setBackground(menuBackgroundTexture);
 	titleMenu.addMenuButton("Neues Spiel", 150, 50);
 	titleMenu.addMenuButton("Spiel Laden", 150, 50);
@@ -92,25 +91,25 @@ int main() {
     sf::Clock dT;
 
 	//Gameloop
-    while (window.isOpen()) {
+    while (window->isOpen()) {
         sf::Event event;
       
 		//umwandlung von int in float
-		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+		sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
 		sf::Vector2f mousePosF = sf::Vector2f(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 
 		string clickedButton = "none";
 			
 		
 
-        while(window.pollEvent(event)){
+        while(window->pollEvent(event)){
 
 
 
             switch (event.type){
                 case sf::Event::Closed:
                     
-                    window.close();
+                    window->close();
                     break;	
 
 
@@ -215,7 +214,7 @@ int main() {
 		titleMenu.update(timeElapsed);
 		mapRenderer->update(timeElapsed);
 
-        window.clear();		//clear screen
+        window->clear();		//clear screen
        
         //rendering objects
 		
@@ -224,12 +223,12 @@ int main() {
 
 		case GameState::titleMenu:
 
-			titleMenu.render(window);
+			titleMenu.render(*window);
 		
 			break;
 
 		case GameState::playing:
-			mapRenderer->render(window);			
+			mapRenderer->render(*window);			
 
 			break;
 
@@ -243,7 +242,7 @@ int main() {
 
 
        
-        window.display();
+        window->display();
     }
     
     return EXIT_SUCCESS ;
