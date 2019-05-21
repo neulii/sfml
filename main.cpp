@@ -70,15 +70,10 @@ int main() {
 	//create window
 	window = new sf::RenderWindow (sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window->setFramerateLimit(60);		//set frame limit to 60 fps
-    
+	
 	//laden der texturen
 	loadTextures();
 	
-	std::cout << "create GameMap" << endl;
-	gameMap = new GameMap(myStringMap, fieldTextureMap);
-	std::cout << "gameMap created   " << endl;
-
-	mapRenderer = new MapRenderer(*gameMap, *window);
 
 	//Menue erstellen
 	Menu titleMenu(*window);
@@ -210,11 +205,34 @@ int main() {
         //update game logic
         dT.restart();		//restart clock 
 		
+		switch (gameState)
+		{
 
-		titleMenu.update(timeElapsed);
-		mapRenderer->update(timeElapsed);
+		case GameState::titleMenu:
 
-        window->clear();		//clear screen
+			window->clear();
+			titleMenu.update(timeElapsed);
+			
+
+			break;
+
+		case GameState::playing:
+			
+			window->clear();
+			mapRenderer->update(timeElapsed);
+
+			break;
+
+		case GameState::pausedMenu:
+
+			break;
+
+		default:
+			break;
+		}
+
+
+      
        
         //rendering objects
 		
@@ -250,9 +268,14 @@ int main() {
 
 //lade texturen
 void loadTextures() {
+
 	cout << "Loading textures ";
+
+	//background titlemenu
 	menuBackgroundTexture.loadFromFile("images/steel_background.jpg");
 	cout << ".";
+	
+	//fieldtexutres
 	grassFieldTexture.loadFromFile("images/grassField.png");
 	cout << ".";
 	coalFieldTexture.loadFromFile("images/coalField.png");
@@ -277,7 +300,13 @@ void loadTextures() {
 
 //neues spiel starten
 void startNewGame() {
+	
 
+	std::cout << "create GameMap" << endl;
+	gameMap = new GameMap(myStringMap, fieldTextureMap);
+	std::cout << "gameMap created   " << endl;
+
+	mapRenderer = new MapRenderer(*gameMap, *window);
 	gameState = GameState::playing;
 }
 
