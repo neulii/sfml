@@ -1,33 +1,65 @@
 #include "MapRenderer.h"
 
-MapRenderer::MapRenderer(GameMap &map)
+MapRenderer::MapRenderer(GameMap &map, sf::RenderWindow &window)
 {
 	this->map = &map;
-
+	this->window = &window;
 }
 
 void MapRenderer::update(long dT)
 {
-	for (int i = 0; i < map->getSize(); i++) {
-		
-		sf::Sprite* sprite = map->getTileAt(i)->getSprite();
 
-		if (movingLeft) {
-			sprite->move(scrollSpeed * dT, 0);
+	sf::Sprite* sprite;
+
+		if (movingLeft && !mapIsOnRightBorder) {
+				
+			for (int i = 0; i < map->getSize(); i++) {
+
+				sprite = map->getTileAt(i)->getSprite();
+				sprite->move(scrollSpeed * dT, 0);
+
+			}
+
+			mapIsOnLeftBorder = false;
+
+			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().x + sprite->getTextureRect().width >= window->getSize().x) {
+				mapIsOnRightBorder = true;
+			}
+
 		}
 
-		if (movingRight) {	
+		if (movingRight && !mapIsOnLeftBorder) {	
+			for (int i = 0; i < map->getSize(); i++) {
+				sprite = map->getTileAt(i)->getSprite();
 				sprite->move(-scrollSpeed * dT, 0);
+
+			}
+
+			mapIsOnRightBorder = false;
+			
+			if (map->getTileAt(0)->getSprite()->getPosition().x < 0) {
+				mapIsOnLeftBorder = true;
+
+			}
+
 		}
 
 		if (movingUp) {
-			sprite->move(0, scrollSpeed * dT);
+			for (int i = 0; i < map->getSize(); i++) {
+				sprite = map->getTileAt(i)->getSprite();
+				sprite->move(0, scrollSpeed * dT);
+
+			}
 		}
 
 		if (movingDown) {
+			for (int i = 0; i < map->getSize(); i++) {
+				sprite = map->getTileAt(i)->getSprite();
 				sprite->move(0, -scrollSpeed * dT);
+			}
 		}
-	}
+		
+
 }
 
 

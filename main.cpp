@@ -69,7 +69,7 @@ int main() {
 	gameMap = new GameMap(myStringMap, fieldTextureMap);
 	std::cout << "gameMap created   " << endl;
 
-	mapRenderer = new MapRenderer(*gameMap);
+	mapRenderer = new MapRenderer(*gameMap, window);
 
 	//Menue erstellen
 	Menu titleMenu(window);
