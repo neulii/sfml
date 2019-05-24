@@ -94,22 +94,26 @@ int main() {
 
 		string clickedButton = "none";
 
+    while(window->pollEvent(event)){
 
+      switch (event.type){
+        case sf::Event::Closed:
 
-        while(window->pollEvent(event)){
-
-
-
-            switch (event.type){
-                case sf::Event::Closed:
-
-                    window->close();
-                    break;
-
-
+            window->close();
+            break;
+										
 				case sf::Event::MouseMoved:
+					switch(gameState){
+						case GameState::playing:
+							cout << "mouse moved" << endl;
+							break;
 
-					titleMenu.setMousePos(mousePosF);
+						case GameState::titleMenu:
+							titleMenu.setMousePos(mousePosF);
+
+							break;
+
+					}
 
 					break;
 
@@ -139,6 +143,11 @@ int main() {
 						}
 
 						break;
+
+						case GameState::playing:
+							cout << "button clicked" << endl;
+
+						break;
 					default:
 						break;
 					}
@@ -148,7 +157,16 @@ int main() {
 
 				case sf::Event::MouseButtonReleased:
 
-					titleMenu.mouseRelease();
+					switch(gameState){
+						case GameState::playing:
+							cout << "button released" << endl;
+							break;
+
+						case GameState::titleMenu:
+							titleMenu.mouseRelease();
+							break;
+					}
+
 
 					break;
             }
@@ -167,13 +185,10 @@ int main() {
 			//LEFT
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 				mapRenderer->moveLeft(true);
-
 			}
 			else {
 				mapRenderer->moveLeft(false);
 			}
-
-
 
 			//Right
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
@@ -198,8 +213,6 @@ int main() {
 
 			break;
 		}
-
-
 
         //update game logic
         dT.restart();		//restart clock
@@ -233,8 +246,7 @@ int main() {
 
 
 
-        //rendering objects
-
+    //rendering objects
 		switch (gameState)
 		{
 
