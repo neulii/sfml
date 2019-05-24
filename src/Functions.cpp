@@ -1,4 +1,4 @@
-#include "Functions.hpp"
+#include "../include/Functions.hpp"
 #include <iostream>
 #include "SFML/Graphics.hpp"
 

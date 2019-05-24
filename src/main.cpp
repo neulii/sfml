@@ -1,16 +1,15 @@
 #include <iostream>
-#include "Functions.hpp"
-#include "Tile.h"
-#include "FieldType.h"
-#include "GameState.h"
-#include "MenuButton.h"
-#include "Menu.h"
-#include "StringMap.h"
-#include "ProductionTile.h"
+#include "../include/Tile.h"
+#include "../include/FieldType.h"
+#include "../include/GameState.h"
+#include "../include/MenuButton.h"
+#include "../include/Menu.h"
+#include "../include/StringMap.h"
+#include "../include/ProductionTile.h"
 #include <set>
-#include "Types.h"
-#include "GameMap.h"
-#include "MapRenderer.h"
+#include "../include/Types.h"
+#include "../include/GameMap.h"
+#include "../include/MapRenderer.h"
 
 void loadTextures();
 void startNewGame();
@@ -61,19 +60,19 @@ StringMap myStringMap(20, 20, myMap);
 GameMap *gameMap;
 MapRenderer *mapRenderer;
 
-//counter from TileClass 
+//counter from TileClass
 unsigned Tile::tileCounter = 0;
 
 int main() {
 
-	
+
 	//create window
 	window = new sf::RenderWindow (sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window->setFramerateLimit(60);		//set frame limit to 60 fps
-	
+
 	//laden der texturen
 	loadTextures();
-	
+
 
 	//Menue erstellen
 	Menu titleMenu(*window);
@@ -81,21 +80,21 @@ int main() {
 	titleMenu.addMenuButton("Neues Spiel", 150, 50);
 	titleMenu.addMenuButton("Spiel Laden", 150, 50);
 	titleMenu.addMenuButton("Spiel Beenden", 150, 50);
-	
+
     sf::Time time;
     sf::Clock dT;
 
 	//Gameloop
     while (window->isOpen()) {
         sf::Event event;
-      
+
 		//umwandlung von int in float
 		sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
 		sf::Vector2f mousePosF = sf::Vector2f(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 
 		string clickedButton = "none";
-			
-		
+
+
 
         while(window->pollEvent(event)){
 
@@ -103,9 +102,9 @@ int main() {
 
             switch (event.type){
                 case sf::Event::Closed:
-                    
+
                     window->close();
-                    break;	
+                    break;
 
 
 				case sf::Event::MouseMoved:
@@ -119,7 +118,7 @@ int main() {
 					switch (gameState)
 					{
 					case GameState::titleMenu:
-						
+
 						clickedButton = titleMenu.clicked();
 
 						//Neues Spiel starten
@@ -144,37 +143,37 @@ int main() {
 						break;
 					}
 
-				
+
 					break;
-				
+
 				case sf::Event::MouseButtonReleased:
 
 					titleMenu.mouseRelease();
-					
+
 					break;
             }
         }
-        
+
         time = dT.getElapsedTime();
         long timeElapsed = time.asMilliseconds();
-        
-		//check key's 
+
+		//check key's
 
 		switch (gameState) {
 
 			//wile Ingame
 		case GameState::playing:
-			
+
 			//LEFT
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 				mapRenderer->moveLeft(true);
-				
+
 			}
 			else {
 				mapRenderer->moveLeft(false);
 			}
 
-			
+
 
 			//Right
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
@@ -200,11 +199,11 @@ int main() {
 			break;
 		}
 
-     
-  
+
+
         //update game logic
-        dT.restart();		//restart clock 
-		
+        dT.restart();		//restart clock
+
 		switch (gameState)
 		{
 
@@ -212,12 +211,12 @@ int main() {
 
 			window->clear();
 			titleMenu.update(timeElapsed);
-			
+
 
 			break;
 
 		case GameState::playing:
-			
+
 			window->clear();
 			mapRenderer->update(timeElapsed);
 
@@ -232,37 +231,37 @@ int main() {
 		}
 
 
-      
-       
+
+
         //rendering objects
-		
+
 		switch (gameState)
 		{
 
 		case GameState::titleMenu:
 
 			titleMenu.render(*window);
-		
+
 			break;
 
 		case GameState::playing:
-			mapRenderer->render(*window);			
+			mapRenderer->render(*window);
 
 			break;
 
 		case GameState::pausedMenu:
 
 			break;
-		
+
 		default:
 			break;
 		}
 
 
-       
+
         window->display();
     }
-    
+
     return EXIT_SUCCESS ;
 }
 
@@ -272,21 +271,21 @@ void loadTextures() {
 	cout << "Loading textures ";
 
 	//background titlemenu
-	menuBackgroundTexture.loadFromFile("images/steel_background.jpg");
+	menuBackgroundTexture.loadFromFile("../resources/images/steel_background.jpg");
 	cout << ".";
-	
+
 	//fieldtexutres
-	grassFieldTexture.loadFromFile("images/grassField.png");
+	grassFieldTexture.loadFromFile("../resources/images/grassField.png");
 	cout << ".";
-	coalFieldTexture.loadFromFile("images/coalField.png");
+	coalFieldTexture.loadFromFile("../resources/images/coalField.png");
 	cout << ".";
-	coalMineFieldTexture.loadFromFile("images/coalMineField.png");
+	coalMineFieldTexture.loadFromFile("../resources/images/coalMineField.png");
 	cout << ".";
-	ironOreFieldTexture.loadFromFile("images/iron_oreField.png");
+	ironOreFieldTexture.loadFromFile("../resources/images/iron_oreField.png");
 	cout << ".";
-	ironOreMineFieldTexture.loadFromFile("images/ironOreMineField.png");
+	ironOreMineFieldTexture.loadFromFile("../resources/mages/ironOreMineField.png");
 	cout << ".";
-	furnaceFieldTexture.loadFromFile("images/furnaceField.png");
+	furnaceFieldTexture.loadFromFile("../resources/images/furnaceField.png");
 	cout << ".";
 
 	fieldTextureMap.insert(make_pair(0, grassFieldTexture));
@@ -300,7 +299,7 @@ void loadTextures() {
 
 //neues spiel starten
 void startNewGame() {
-	
+
 
 	std::cout << "create GameMap" << endl;
 	gameMap = new GameMap(myStringMap, fieldTextureMap);
@@ -309,4 +308,3 @@ void startNewGame() {
 	mapRenderer = new MapRenderer(*gameMap, *window);
 	gameState = GameState::playing;
 }
-

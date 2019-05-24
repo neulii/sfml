@@ -1,4 +1,4 @@
-#include "StringMap.h"
+#include "../include/StringMap.h"
 
 StringMap::StringMap(unsigned int blocksX, unsigned int blocksY)
 {
@@ -31,7 +31,7 @@ StringMap::StringMap(unsigned int blocksX, unsigned int blocksY, vector<int> map
 void StringMap::printMapToConsole()
 {
 	cout << "============   MapString  ============"<< endl;
-	
+
 	for (unsigned i = 0; i < mapString.size(); i++) {
 		if (i % blocksX == 0) {
 			cout << endl;
@@ -43,10 +43,10 @@ void StringMap::printMapToConsole()
 }
 
 FieldType StringMap::getFieldType(unsigned posX, unsigned posY) {
-	
+
 
 	return mapString.at(coordToLine(posX, posY));
-	
+
 }
 
 FieldType StringMap::getFieldType(unsigned posLinear) {
@@ -56,7 +56,7 @@ FieldType StringMap::getFieldType(unsigned posLinear) {
 vector<unsigned int> StringMap::lineToCoord(unsigned linePos) {
 
 	vector<unsigned> coord;
-	
+
 	int xCoord = linePos % blocksX;
 	int yCoord = static_cast<int>(linePos / blocksX);
 

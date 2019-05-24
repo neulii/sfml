@@ -1,4 +1,4 @@
-#include "Tile.h"
+#include "../include/Tile.h"
 #include <iostream>
 
 //Tile::Tile(FieldType fieldType, int x, int y, sf::Texture texture) {
@@ -24,7 +24,7 @@ Tile::Tile(int x, int y, sf::Texture &texture) {
 
 //render the tile
 void Tile::render(sf::RenderWindow &window) {
-	
+
 	window.draw(tileSprite);
 }
 

@@ -1,6 +1,6 @@
-#include "MenuButton.h"
+#include "../include/MenuButton.h"
 #include <iostream>
-#include "Functions.hpp"
+#include "../include/Functions.hpp"
 
 void MenuButton::render(sf::RenderWindow& window) {
 	sf::RectangleShape shadow;
@@ -11,10 +11,10 @@ void MenuButton::render(sf::RenderWindow& window) {
 	switch (isHoovered)
 	{
 	case true:
-		
+
 		this->drawBackgroundcolor = this->hooverBackgroundColor;
 		this->drawTextColor = this->hooverTextColor;
-		
+
 		break;
 
 	case false:
@@ -35,7 +35,7 @@ void MenuButton::render(sf::RenderWindow& window) {
 
 	buttonShape.setFillColor(drawBackgroundcolor);
 	buttonText.setFillColor(drawTextColor);
-	
+
 	window.draw(shadow);
 	window.draw(buttonShape);
 	window.draw(this->buttonText);
@@ -55,7 +55,7 @@ MenuButton::MenuButton(string buttonText, float x, float y, float width, float h
 	this->height = height;
 	this->width = width;
 
-	if (!buttonFont.loadFromFile("arial.ttf")) {
+	if (!buttonFont.loadFromFile("../resources/fonts/arial.ttf")) {
 		std::cout << "Fehler beim Laden der button-Schrift";
 
 	}

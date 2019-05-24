@@ -1,4 +1,4 @@
-#include "MapRenderer.h"
+#include "../include/MapRenderer.h"
 
 MapRenderer::MapRenderer(GameMap &map, sf::RenderWindow &window)
 {
@@ -12,7 +12,7 @@ void MapRenderer::update(long dT)
 
 		//moving left
 		if (movingLeft && !mapIsOnLeftBorder) {
-				
+
 			for (int i = 0; i < map->getSize(); i++) {
 
 				sprite = map->getTileAt(i)->getSprite();
@@ -29,7 +29,7 @@ void MapRenderer::update(long dT)
 		}
 
 		//moving right
-		if (movingRight && !mapIsOnRightBorder) {	
+		if (movingRight && !mapIsOnRightBorder) {
 			for (int i = 0; i < map->getSize(); i++) {
 				sprite = map->getTileAt(i)->getSprite();
 				sprite->move(-scrollSpeed * dT, 0);
@@ -37,7 +37,7 @@ void MapRenderer::update(long dT)
 			}
 
 			mapIsOnLeftBorder = false;
-			
+
 			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().x + sprite->getTextureRect().width <= window->getSize().x) {
 				mapIsOnRightBorder = true;
 			}
@@ -47,12 +47,12 @@ void MapRenderer::update(long dT)
 		if (movingUp && !mapIsOnTopBorder) {
 			for (int i = 0; i < map->getSize(); i++) {
 				sprite = map->getTileAt(i)->getSprite();
-				sprite->move(0, scrollSpeed * dT);		
-			
+				sprite->move(0, scrollSpeed * dT);
+
 			}
 
 			mapIsOnBottomBorder = false;
-			
+
 			if (map->getTileAt(0)->getSprite()->getPosition().y >= 0) {
 				mapIsOnTopBorder = true;
 			}
@@ -66,13 +66,13 @@ void MapRenderer::update(long dT)
 			}
 
 			mapIsOnTopBorder = false;
-			
+
 			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().y + sprite->getTextureRect().height <= window->getSize().y) {
 				mapIsOnBottomBorder = true;
 			}
 		}
-		
-		
+
+
 
 }
 
@@ -83,7 +83,7 @@ void MapRenderer::render(sf::RenderWindow& window)
 
 		//map->getTileAt(i)->render(window);
 		sf::Sprite* sprite = map->getTileAt(i)->getSprite();
-		
+
 		sf::Vector2f pos = sprite->getPosition();
 
 		window.draw(*sprite);
