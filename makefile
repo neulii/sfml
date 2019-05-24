@@ -1,6 +1,6 @@
 OBJS = object/Functions.o object/GameMap.o object/GameObject.o object/main.o object/MapRenderer.o object/Menu.o object/MenuButton.o object/ProductionTile.o object/StringMap.o object/Tile.o
 CXX = g++
-CXXFLAGS = -Wall -std=c++11 
+CXXFLAGS = -Wall -std=c++11
 
 LDLIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 
@@ -46,3 +46,7 @@ object/Tile.o: src/Tile.cpp include/Tile.h
 clean:
 	rm $(OBJS)
 	rm game
+
+cleanwin:
+	del object\\*.o
+	del game.exe
