@@ -42,3 +42,7 @@ object/StringMap.o: src/StringMap.cpp include/StringMap.h
 
 object/Tile.o: src/Tile.cpp include/Tile.h
 	g++ $(CXXFLAGS) -c src/Tile.cpp -o object/Tile.o $(CPPFLAGS)
+
+clean:
+	rm $(OBJS)
+	rm game

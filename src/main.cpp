@@ -271,21 +271,20 @@ void loadTextures() {
 	cout << "Loading textures ";
 
 	//background titlemenu
-	menuBackgroundTexture.loadFromFile("../resources/images/steel_background.jpg");
+	menuBackgroundTexture.loadFromFile("resources/images/steel_background.jpg");
 	cout << ".";
-
 	//fieldtexutres
-	grassFieldTexture.loadFromFile("../resources/images/grassField.png");
+	grassFieldTexture.loadFromFile("resources/images/grassField.png");
 	cout << ".";
-	coalFieldTexture.loadFromFile("../resources/images/coalField.png");
+	coalFieldTexture.loadFromFile("resources/images/coalField.png");
 	cout << ".";
-	coalMineFieldTexture.loadFromFile("../resources/images/coalMineField.png");
+	coalMineFieldTexture.loadFromFile("resources/images/coalMineField.png");
 	cout << ".";
-	ironOreFieldTexture.loadFromFile("../resources/images/iron_oreField.png");
+	ironOreFieldTexture.loadFromFile("resources/images/iron_oreField.png");
 	cout << ".";
-	ironOreMineFieldTexture.loadFromFile("../resources/mages/ironOreMineField.png");
+	ironOreMineFieldTexture.loadFromFile("resources/images/ironOreMineField.png");
 	cout << ".";
-	furnaceFieldTexture.loadFromFile("../resources/images/furnaceField.png");
+	furnaceFieldTexture.loadFromFile("resources/images/furnaceField.png");
 	cout << ".";
 
 	fieldTextureMap.insert(make_pair(0, grassFieldTexture));

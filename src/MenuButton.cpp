@@ -55,7 +55,7 @@ MenuButton::MenuButton(string buttonText, float x, float y, float width, float h
 	this->height = height;
 	this->width = width;
 
-	if (!buttonFont.loadFromFile("../resources/fonts/arial.ttf")) {
+	if (!buttonFont.loadFromFile("resources/fonts/arial.ttf")) {
 		std::cout << "Fehler beim Laden der button-Schrift";
 
 	}
