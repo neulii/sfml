@@ -106,6 +106,8 @@ void MapRenderer::moveDown(bool movingDown) {
 }
 
 void MapRenderer::setMousePos(sf::Vector2f mousePos){
+	this->mousePos = mousePos;
+	cout << mousePos.x << "  /  " << mousePos.y << endl;
 
 
 }

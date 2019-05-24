@@ -10,6 +10,7 @@ private:
 	GameMap* map;
 	int windowHeight;
 	int windowWidth;
+	sf::Vector2f mousePos;
 
 	float scrollSpeed = 0.4;
 
