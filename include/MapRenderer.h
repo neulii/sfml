@@ -34,7 +34,7 @@ public:
 	void moveUp(bool movingUp);
 	void moveDown(bool movingDown);
 
-
+	void setMousePos(sf::Vector2f mousePos);
 
 
 	~MapRenderer();

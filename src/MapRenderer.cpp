@@ -104,6 +104,11 @@ void MapRenderer::moveUp(bool movingUp) {
 void MapRenderer::moveDown(bool movingDown) {
 	this->movingDown = movingDown;
 }
+
+void MapRenderer::setMousePos(sf::Vector2f mousePos){
+
+
+}
 MapRenderer::~MapRenderer()
 {
 }

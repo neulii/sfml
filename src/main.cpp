@@ -111,6 +111,7 @@ int main() {
 					switch(gameState){
 						case GameState::playing:
 
+							mapRenderer->setMousePos(mousePosF);
 
 							break;
 
