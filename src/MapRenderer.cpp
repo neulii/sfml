@@ -1,9 +1,10 @@
 #include "../include/MapRenderer.h"
 
-MapRenderer::MapRenderer(GameMap &map, sf::RenderWindow &window)
+MapRenderer::MapRenderer(GameMap &map, int windowWidth, int windowHeight)
 {
 	this->map = &map;
-	this->window = &window;
+	this->windowWidth = windowWidth;
+	this->windowHeight = windowHeight;
 }
 
 void MapRenderer::update(long dT)
@@ -38,7 +39,7 @@ void MapRenderer::update(long dT)
 
 			mapIsOnLeftBorder = false;
 
-			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().x + sprite->getTextureRect().width <= window->getSize().x) {
+			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().x + sprite->getTextureRect().width <= windowWidth) {
 				mapIsOnRightBorder = true;
 			}
 		}
@@ -67,13 +68,10 @@ void MapRenderer::update(long dT)
 
 			mapIsOnTopBorder = false;
 
-			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().y + sprite->getTextureRect().height <= window->getSize().y) {
+			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().y + sprite->getTextureRect().height <= windowHeight) {
 				mapIsOnBottomBorder = true;
 			}
 		}
-
-
-
 }
 
 

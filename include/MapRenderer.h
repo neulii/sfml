@@ -8,10 +8,11 @@ class MapRenderer : public GameObject
 {
 private:
 	GameMap* map;
-	sf::RenderWindow* window;
+	int windowHeight;
+	int windowWidth;
 
 	float scrollSpeed = 0.4;
-	
+
 	bool movingLeft = false;
 	bool movingRight = false;
 	bool movingUp = false;
@@ -23,7 +24,7 @@ private:
 	bool mapIsOnBottomBorder = false;
 
 public:
-	MapRenderer(GameMap &map, sf::RenderWindow &window);
+	MapRenderer(GameMap &map, int windowWidth, int windowHeight);
 
 	void update(long dT);
 	void render(sf::RenderWindow &window);
@@ -41,5 +42,3 @@ public:
 
 
 #endif // !MAPRENDERER_H
-
-

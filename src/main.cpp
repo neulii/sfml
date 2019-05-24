@@ -14,6 +14,9 @@
 void loadTextures();
 void startNewGame();
 
+int windowWidth = 800;
+int windowHeight = 600;
+
 sf::RenderWindow* window;
 sf::Texture menuBackgroundTexture;
 
@@ -67,7 +70,7 @@ int main() {
 
 
 	//create window
-	window = new sf::RenderWindow (sf::VideoMode(800,600),"steelManager",sf::Style::Titlebar | sf::Style::Close);
+	window = new sf::RenderWindow (sf::VideoMode(windowWidth,windowHeight),"steelManager",sf::Style::Titlebar | sf::Style::Close);
     window->setFramerateLimit(60);		//set frame limit to 60 fps
 
 	//laden der texturen
@@ -101,11 +104,14 @@ int main() {
 
             window->close();
             break;
-										
+
+
+				//Mouse moved
 				case sf::Event::MouseMoved:
 					switch(gameState){
 						case GameState::playing:
-							cout << "mouse moved" << endl;
+
+
 							break;
 
 						case GameState::titleMenu:
@@ -116,7 +122,7 @@ int main() {
 					}
 
 					break;
-
+				//mouse button pressed
 				case sf::Event::MouseButtonPressed:
 
 					switch (gameState)
@@ -155,6 +161,7 @@ int main() {
 
 					break;
 
+				//mouse button released
 				case sf::Event::MouseButtonReleased:
 
 					switch(gameState){
@@ -316,6 +323,6 @@ void startNewGame() {
 	gameMap = new GameMap(myStringMap, fieldTextureMap);
 	std::cout << "gameMap created   " << endl;
 
-	mapRenderer = new MapRenderer(*gameMap, *window);
+	mapRenderer = new MapRenderer(*gameMap,windowWidth, windowHeight);
 	gameState = GameState::playing;
 }
