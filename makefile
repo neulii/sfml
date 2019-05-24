@@ -1,6 +1,6 @@
 OBJS = object/Functions.o object/GameMap.o object/GameObject.o object/main.o object/MapRenderer.o object/Menu.o object/MenuButton.o object/ProductionTile.o object/StringMap.o object/Tile.o
 CXX = g++
-CXXFLAGS = -Wall -std=c++11 -Wc++11-extensions
+CXXFLAGS = -Wall -std=c++11 
 
 LDLIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 
