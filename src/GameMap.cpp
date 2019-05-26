@@ -29,8 +29,13 @@ ProductionTile* GameMap::getTileAt(unsigned pos) {
 	return gameMap.at(pos);
 }
 
+//getTile in 
 ProductionTile* GameMap::getTileAt(sf::Vector2f pos){
-	
+	ProductionTile* temp;
+	// for(int i = 0; i<gameMap.size(); i++){
+		
+
+	// 
 }
 
 unsigned GameMap::getSize() {
