@@ -23,8 +23,14 @@ GameMap::GameMap(StringMap& stringMap, FieldTextureMap& textureMap)
 
 	}
 }
+
+//getTile in blocks
 ProductionTile* GameMap::getTileAt(unsigned pos) {
 	return gameMap.at(pos);
+}
+
+ProductionTile* GameMap::getTileAt(sf::Vector2f pos){
+	
 }
 
 unsigned GameMap::getSize() {

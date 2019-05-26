@@ -17,7 +17,12 @@ public:
 	/*GameMap(StringMap &stringMap);*/
 	GameMap(StringMap& stringMap,FieldTextureMap &textureMap);
 
+	//getTile in bocks
 	ProductionTile* getTileAt(unsigned pos);
+
+	//getTile in xpos/ypos
+	ProductionTile* getTileAt(sf::Vector2f pos);
+
 	unsigned getSize();
 
 
@@ -25,5 +30,3 @@ public:
 };
 
 #endif // !GAMEMAP_H
-
-
