@@ -38,6 +38,17 @@ sf::Sprite* Tile::getSprite()
 	return &tileSprite;
 }
 
+bool Tile::contains(sf::Vector2f pos) {
+	bool isIn = false;
+	
+	if (rect.getLocalBounds().contains(pos)) {
+		isIn = true;
+	}
+	
+	return isIn;
+}
+
+
 Tile::~Tile()
 {
 	tileCounter--;

@@ -26,6 +26,7 @@ class Tile : public GameObject
 		Tile(int x, int y, sf::Texture &texture);
 		void render(sf::RenderWindow &window);
 		void update(long dT);
+		bool contains(sf::Vector2f pos);
 		sf::Sprite* getSprite();
 		~Tile();
 	};
