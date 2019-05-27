@@ -18,8 +18,8 @@ public:
 	GameMap(StringMap& stringMap,FieldTextureMap &textureMap);
 
 	ProductionTile* getTileAt(unsigned pos);
+	ProductionTile* getTileAt(sf::Vector2f pos);
 	unsigned getSize();
-
 
 	~GameMap();
 };
