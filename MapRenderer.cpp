@@ -9,6 +9,55 @@ MapRenderer::MapRenderer(GameMap& map, int windowWidth, int windowHeight)
 
 void MapRenderer::update(long dT)
 {
+	processMoving(dT);
+	
+	//render border in mouse hoovered tile
+
+	ProductionTile* hooveredTile = map->getTileAt(mousePos);
+	//TODO
+	
+}
+
+
+void MapRenderer::render(sf::RenderWindow & window)
+{
+	for (int i = 0; i < map->getSize(); i++) {
+
+		//map->getTileAt(i)->render(window);
+		sf::Sprite* sprite = map->getTileAt(i)->getSprite();
+
+		sf::Vector2f pos = sprite->getPosition();
+
+		window.draw(*sprite);
+	}
+
+}
+
+void MapRenderer::moveLeft(bool movingLeft) {
+	this->movingLeft = movingLeft;
+}
+
+void MapRenderer::moveRight(bool movingRight) {
+	this->movingRight = movingRight;
+}
+
+void MapRenderer::moveUp(bool movingUp) {
+	this->movingUp = movingUp;
+}
+
+void MapRenderer::moveDown(bool movingDown) {
+	this->movingDown = movingDown;
+}
+
+void MapRenderer::setMousePos(sf::Vector2f mousePos) {
+	this->mousePos = mousePos;
+	//cout << mousePos.x << "  /  " << mousePos.y << endl;
+
+
+}
+
+//processing moving with keys
+void MapRenderer::processMoving(long dT) {
 	sf::Sprite* sprite = NULL;
 
 	//moving left
@@ -72,50 +121,6 @@ void MapRenderer::update(long dT)
 			mapIsOnBottomBorder = true;
 		}
 	}
-
-	//render border in mouse hoovered tile
-
-	ProductionTile* hooveredTile = map->getTileAt(mousePos);
-
-	hooveredTile->
-
-
-}
-
-
-void MapRenderer::render(sf::RenderWindow & window)
-{
-	for (int i = 0; i < map->getSize(); i++) {
-
-		//map->getTileAt(i)->render(window);
-		sf::Sprite* sprite = map->getTileAt(i)->getSprite();
-
-		sf::Vector2f pos = sprite->getPosition();
-
-		window.draw(*sprite);
-	}
-
-}
-
-void MapRenderer::moveLeft(bool movingLeft) {
-	this->movingLeft = movingLeft;
-}
-
-void MapRenderer::moveRight(bool movingRight) {
-	this->movingRight = movingRight;
-}
-
-void MapRenderer::moveUp(bool movingUp) {
-	this->movingUp = movingUp;
-}
-
-void MapRenderer::moveDown(bool movingDown) {
-	this->movingDown = movingDown;
-}
-
-void MapRenderer::setMousePos(sf::Vector2f mousePos) {
-	this->mousePos = mousePos;
-	//cout << mousePos.x << "  /  " << mousePos.y << endl;
 
 
 }

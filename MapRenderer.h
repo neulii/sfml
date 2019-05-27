@@ -34,6 +34,7 @@ public:
 	void moveRight(bool movingRight);
 	void moveUp(bool movingUp);
 	void moveDown(bool movingDown);
+	void processMoving(long dT);
 
 	void setMousePos(sf::Vector2f mousePos);
 
