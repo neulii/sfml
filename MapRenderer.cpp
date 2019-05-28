@@ -21,7 +21,7 @@ void MapRenderer::update(long dT)
 
 void MapRenderer::render(sf::RenderWindow & window)
 {
-	for (int i = 0; i < map->getSize(); i++) {
+	for (unsigned i = 0; i < map->getSize(); i++) {
 
 		//map->getTileAt(i)->render(window);
 		sf::Sprite* sprite = map->getTileAt(i)->getSprite();
@@ -63,7 +63,7 @@ void MapRenderer::processMoving(long dT) {
 	//moving left
 	if (movingLeft && !mapIsOnLeftBorder) {
 
-		for (int i = 0; i < map->getSize(); i++) {
+		for (unsigned i = 0; i < map->getSize(); i++) {
 
 			sprite = map->getTileAt(i)->getSprite();
 			sprite->move(scrollSpeed * dT, 0);
@@ -80,7 +80,7 @@ void MapRenderer::processMoving(long dT) {
 
 	//moving right
 	if (movingRight && !mapIsOnRightBorder) {
-		for (int i = 0; i < map->getSize(); i++) {
+		for (unsigned i = 0; i < map->getSize(); i++) {
 			sprite = map->getTileAt(i)->getSprite();
 			sprite->move(-scrollSpeed * dT, 0);
 
@@ -95,7 +95,7 @@ void MapRenderer::processMoving(long dT) {
 
 	//moving up
 	if (movingUp && !mapIsOnTopBorder) {
-		for (int i = 0; i < map->getSize(); i++) {
+		for (unsigned i = 0; i < map->getSize(); i++) {
 			sprite = map->getTileAt(i)->getSprite();
 			sprite->move(0, scrollSpeed * dT);
 
@@ -110,7 +110,7 @@ void MapRenderer::processMoving(long dT) {
 
 	//moving down
 	if (movingDown && !mapIsOnBottomBorder) {
-		for (int i = 0; i < map->getSize(); i++) {
+		for (unsigned i = 0; i < map->getSize(); i++) {
 			sprite = map->getTileAt(i)->getSprite();
 			sprite->move(0, -scrollSpeed * dT);
 		}

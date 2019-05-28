@@ -12,7 +12,7 @@ private:
 	int windowWidth;
 	sf::Vector2f mousePos;
 
-	float scrollSpeed = 0.4;
+	float scrollSpeed = 0.4f;
 
 	bool movingLeft = false;
 	bool movingRight = false;

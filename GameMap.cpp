@@ -6,7 +6,7 @@ GameMap::GameMap(StringMap& stringMap, FieldTextureMap& textureMap)
 
 	//create tiles for gamemap
 
-	for (int i = 0; i < this->stringMap->getMapSize(); i++) {
+	for (unsigned i = 0; i < this->stringMap->getMapSize(); i++) {
 
 		//position der bloecke ermitteln
 		unsigned xPosBlocks = stringMap.lineToCoord(i).at(0);	//erster wert ist x-pos
@@ -31,7 +31,7 @@ ProductionTile* GameMap::getTileAt(unsigned pos) {
 //getTile from pixels
 ProductionTile* GameMap::getTileAt(sf::Vector2f pos) {
 	ProductionTile* temp = NULL;
-	for (int i = 0; i < gameMap.size(); i++) {
+	for (unsigned i = 0; i < gameMap.size(); i++) {
 		if (gameMap.at(i)->contains(pos)) {
 			temp = gameMap.at(i);
 
