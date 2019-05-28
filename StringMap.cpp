@@ -23,7 +23,7 @@ StringMap::StringMap(unsigned int blocksX, unsigned int blocksY, vector<int> map
 		throw "check Parameter of MapString!!";
 	}
 
-	for (int i = 0; i < mapString.size(); i++) {
+	for (unsigned i = 0; i < mapString.size(); i++) {
 		this->mapString.push_back(static_cast<FieldType>(mapString.at(i)));
 	}
 }

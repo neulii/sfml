@@ -15,7 +15,6 @@ void MapRenderer::update(long dT)
 
 	ProductionTile* hooveredTile = map->getTileAt(mousePos);
 	//TODO
-	
 }
 
 
@@ -25,7 +24,6 @@ void MapRenderer::render(sf::RenderWindow & window)
 
 		//map->getTileAt(i)->render(window);
 		sf::Sprite* sprite = map->getTileAt(i)->getSprite();
-
 		sf::Vector2f pos = sprite->getPosition();
 
 		window.draw(*sprite);
@@ -51,9 +49,6 @@ void MapRenderer::moveDown(bool movingDown) {
 
 void MapRenderer::setMousePos(sf::Vector2f mousePos) {
 	this->mousePos = mousePos;
-	//cout << mousePos.x << "  /  " << mousePos.y << endl;
-
-
 }
 
 //processing moving with keys
@@ -67,14 +62,12 @@ void MapRenderer::processMoving(long dT) {
 
 			sprite = map->getTileAt(i)->getSprite();
 			sprite->move(scrollSpeed * dT, 0);
-
 		}
 
 		mapIsOnRightBorder = false;
 
 		if (map->getTileAt(0)->getSprite()->getPosition().x > 0) {
 			mapIsOnLeftBorder = true;
-
 		}
 	}
 
@@ -83,14 +76,14 @@ void MapRenderer::processMoving(long dT) {
 		for (unsigned i = 0; i < map->getSize(); i++) {
 			sprite = map->getTileAt(i)->getSprite();
 			sprite->move(-scrollSpeed * dT, 0);
-
 		}
 
 		mapIsOnLeftBorder = false;
-
-		if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().x + sprite->getTextureRect().width <= windowWidth) {
-			mapIsOnRightBorder = true;
-		}
+		
+		if(sprite!=NULL)
+			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().x + sprite->getTextureRect().width <= windowWidth) {
+				mapIsOnRightBorder = true;
+			}
 	}
 
 	//moving up
@@ -98,7 +91,6 @@ void MapRenderer::processMoving(long dT) {
 		for (unsigned i = 0; i < map->getSize(); i++) {
 			sprite = map->getTileAt(i)->getSprite();
 			sprite->move(0, scrollSpeed * dT);
-
 		}
 
 		mapIsOnBottomBorder = false;
@@ -114,12 +106,12 @@ void MapRenderer::processMoving(long dT) {
 			sprite = map->getTileAt(i)->getSprite();
 			sprite->move(0, -scrollSpeed * dT);
 		}
-
 		mapIsOnTopBorder = false;
-
-		if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().y + sprite->getTextureRect().height <= windowHeight) {
-			mapIsOnBottomBorder = true;
-		}
+		
+		if(sprite!=NULL)
+			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().y + sprite->getTextureRect().height <= windowHeight) {
+				mapIsOnBottomBorder = true;
+			}
 	}
 
 

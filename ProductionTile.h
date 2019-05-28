@@ -12,7 +12,7 @@ public:
 	//ProductionTile(FieldType fieldType, int x, int y, sf::Texture texture);
 
 
-	ProductionTile(FieldType fieldType, int x, int y,sf::Texture &texture);
+	ProductionTile(FieldType fieldType, double x, double y,sf::Texture &texture);
 
 	
 	~ProductionTile();

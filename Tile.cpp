@@ -2,7 +2,7 @@
 #include <iostream>
 
 //Tile::Tile(FieldType fieldType, int x, int y, sf::Texture texture) {
-Tile::Tile(int x, int y, sf::Texture &texture) {
+Tile::Tile(double x, double y, sf::Texture &texture) {
 
 	tileCounter++;
 	//std::cout << tileCounter << std::endl;
@@ -14,12 +14,12 @@ Tile::Tile(int x, int y, sf::Texture &texture) {
 	this->width = texture.getSize().x;
 	this->height = texture.getSize().y;
 
-	rect.setSize(sf::Vector2f(width, height));
+	rect.setSize(sf::Vector2f(static_cast<float>(width), static_cast<float>(height)));
 
-	rect.setPosition(x, y);
+	rect.setPosition(static_cast<float>(x), static_cast<float>(y));
 
 	tileSprite.setTexture(*this->texture);
-	tileSprite.setPosition(x, y);
+	tileSprite.setPosition(static_cast<float>(x), static_cast<float>(y));
 }
 
 //render the tile
