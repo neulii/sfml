@@ -69,7 +69,6 @@ unsigned Tile::tileCounter = 0;
 
 int main() {
 
-
 	//create window
 	window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "steelManager", sf::Style::Titlebar | sf::Style::Close);
 	window->setFramerateLimit(60);		//set frame limit to 60 fps
