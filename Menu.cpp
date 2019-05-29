@@ -11,6 +11,8 @@ void Menu::update(long dT)
 {
 	for (MenuButton *button : menuButtons)
 	{
+		button->update(dT);
+		
 		if (button->getButtonBounds().contains(this->mousePos)) {
 			button->setHoovered(true);
 		}
