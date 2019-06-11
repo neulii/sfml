@@ -12,6 +12,26 @@
 #include "GameMap.h"
 #include "MapRenderer.h"
 
+
+class HooverAble {
+
+private: 
+	bool isHoovered = false;
+
+public:
+	virtual void draw(sf::RenderWindow &window) = 0;
+	virtual void update(long dT) = 0;
+	
+	bool getIsHoovered() {
+		return this->isHoovered;
+	}
+
+	void setIsHoovered(bool isHoovered){
+		this->isHoovered = isHoovered;
+
+	}
+};
+
 void loadTextures();
 void startNewGame();
 
