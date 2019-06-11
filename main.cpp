@@ -19,8 +19,9 @@ private:
 	bool isHoovered = false;
 
 public:
-	virtual void draw(sf::RenderWindow &window) = 0;
+	virtual void render(sf::RenderWindow &window) = 0;
 	virtual void update(long dT) = 0;
+	virtual void hooverAction() = 0;
 	
 	bool getIsHoovered() {
 		return this->isHoovered;
@@ -30,6 +31,32 @@ public:
 		this->isHoovered = isHoovered;
 
 	}
+};
+
+class HooverableRectangle : public sf::RectangleShape, public HooverAble{
+private:
+
+public:
+
+	HooverableRectangle(const sf::Vector2f size) :sf::RectangleShape(size) {
+
+	}
+
+	void render(sf::RenderWindow& window) {
+
+
+	}
+
+	void update(long dT) {
+		if (getIsHoovered) {
+			hooverAction();
+		}
+	}
+
+	void hooverAction() {
+
+	}
+	
 };
 
 void loadTextures();
@@ -88,6 +115,14 @@ MapRenderer* mapRenderer;
 unsigned Tile::tileCounter = 0;
 
 int main() {
+
+	HooverableRectangle button(sf::Vector2f(50,50));
+	button.setPosition(10, 10);
+
+	
+
+
+
 
 
 	//create window
