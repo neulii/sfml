@@ -33,27 +33,53 @@ public:
 	}
 };
 
-class HooverableRectangle : public sf::RectangleShape, public HooverAble{
+class HooverableRectangle : public HooverAble{
 private:
+	sf::RectangleShape rec;
+	sf::RenderWindow *window = NULL;
 
 public:
 
-	HooverableRectangle(const sf::Vector2f size) :sf::RectangleShape(size) {
-
+	HooverableRectangle(const sf::Vector2f size)  {
+		rec.setSize(size);
 	}
 
 	void render(sf::RenderWindow& window) {
+		this->window = &window;
+		window.draw(rec);
+	}
 
+	sf::RectangleShape* getRectangleShape() {
+		return &rec;
 
 	}
 
 	void update(long dT) {
-		if (getIsHoovered) {
+		if(window!=NULL)
+			std::cout << sf::Mouse::getPosition().x-window->getPosition().x << "   " << sf::Mouse::getPosition().y - window->getPosition().y << std::endl;
+			
+		if (false){
+			setIsHoovered(true);
+
+		}
+		else {
+			setIsHoovered(false);
+		}
+
+		if (HooverAble::getIsHoovered()) {
+			rec.setOutlineThickness(5);
 			hooverAction();
 		}
+		else {
+			rec.setOutlineThickness(0);
+
+		}
+
+
 	}
 
 	void hooverAction() {
+		std::cout << "is hoovered" << std::endl;
 
 	}
 	
@@ -116,8 +142,10 @@ unsigned Tile::tileCounter = 0;
 
 int main() {
 
-	HooverableRectangle button(sf::Vector2f(50,50));
-	button.setPosition(10, 10);
+	HooverableRectangle button(sf::Vector2f(50, 50));
+	button.getRectangleShape()->setPosition(0, 0);
+
+
 
 	
 
@@ -126,9 +154,9 @@ int main() {
 
 
 	//create window
-	window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "steelManager", sf::Style::Titlebar | sf::Style::Close);
+	window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "steelManager", /*sf::Style::Titlebar |*/ sf::Style::None);
 	window->setFramerateLimit(60);		//set frame limit to 60 fps
-
+	
 	//laden der texturen
 	loadTextures();
 
@@ -168,6 +196,7 @@ int main() {
 				case GameState::playing:
 
 					mapRenderer->setMousePos(mousePosF);
+
 
 					break;
 
@@ -293,7 +322,9 @@ int main() {
 			break;
 
 		case GameState::playing:
-
+			button.update(timeElapsed);
+			
+			//std::cout << window->getPosition().x << std::endl;
 			window->clear();
 			mapRenderer->update(timeElapsed);
 
@@ -322,6 +353,7 @@ int main() {
 
 		case GameState::playing:
 			mapRenderer->render(*window);
+			button.render(*window);
 
 			break;
 
