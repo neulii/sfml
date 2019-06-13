@@ -43,22 +43,37 @@ public:
 	HooverableRectangle(const sf::Vector2f size)  {
 		rec.setSize(size);
 	}
+    
+    void setPosition(sf::Vector2f pos){
+      
+        rec.setPosition(pos);
+        
+    }
 
 	void render(sf::RenderWindow& window) {
 		this->window = &window;
 		window.draw(rec);
 	}
 
-	sf::RectangleShape* getRectangleShape() {
+	sf::RectangleShape* getRectangleShape(){
 		return &rec;
-
 	}
 
 	void update(long dT) {
-		if(window!=NULL)
-			std::cout << sf::Mouse::getPosition().x-window->getPosition().x << "   " << sf::Mouse::getPosition().y - window->getPosition().y << std::endl;
+		//if(window!=NULL)
+			//std::cout << sf::Mouse::getPosition().x-window->getPosition().x << "   " << sf::Mouse::getPosition().y - window->getPosition().y << std::endl;
 			
-		if (false){
+        float relativeMousePosX = sf::Mouse::getPosition().x;
+        float relativeMousePosY = sf::Mouse::getPosition().y;
+        
+        
+//        std::cout << rec.getLocalBounds().left << "     "  << rec.getLocalBounds().top << std::endl;
+//        std::cout << rec.getSize().x << "   " << rec.getSize().y << std::endl;
+        
+		//if (rec.getLocalBounds().contains(relativeMousePosX, relativeMousePosY)){
+        if(rec.getGlobalBounds().contains(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y)){
+            
+        std::cout << "hoovered"<< std::endl;
 			setIsHoovered(true);
 
 		}
@@ -143,7 +158,7 @@ unsigned Tile::tileCounter = 0;
 int main() {
 
 	HooverableRectangle button(sf::Vector2f(50, 50));
-	button.getRectangleShape()->setPosition(0, 0);
+    button.setPosition(sf::Vector2f(0,0));
 
 
 
@@ -304,6 +319,9 @@ int main() {
 			else
 				mapRenderer->moveDown(false);
 
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+                    gameState = GameState::titleMenu;
+                }
 			break;
 		}
 
