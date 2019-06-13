@@ -17,6 +17,9 @@ class HooverAble {
 
 private: 
 	bool isHoovered = false;
+    
+protected:
+    sf::RectangleShape rec;
 
 public:
 	virtual void render(sf::RenderWindow &window) = 0;
@@ -35,7 +38,7 @@ public:
 
 class HooverableRectangle : public HooverAble{
 private:
-	sf::RectangleShape rec;
+	
 	sf::RenderWindow *window = NULL;
 
 public:
@@ -60,37 +63,37 @@ public:
 	}
 
 	void update(long dT) {
-		//if(window!=NULL)
+        if(window!=NULL){
 			//std::cout << sf::Mouse::getPosition().x-window->getPosition().x << "   " << sf::Mouse::getPosition().y - window->getPosition().y << std::endl;
-			
-        float relativeMousePosX = sf::Mouse::getPosition().x;
-        float relativeMousePosY = sf::Mouse::getPosition().y;
-        
-        
-//        std::cout << rec.getLocalBounds().left << "     "  << rec.getLocalBounds().top << std::endl;
-//        std::cout << rec.getSize().x << "   " << rec.getSize().y << std::endl;
-        
-		//if (rec.getLocalBounds().contains(relativeMousePosX, relativeMousePosY)){
-        if(rec.getGlobalBounds().contains(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y)){
             
-        std::cout << "hoovered"<< std::endl;
-			setIsHoovered(true);
+            float relativeMousePosX = sf::Mouse::getPosition().x-window->getPosition().x;
+            float relativeMousePosY = sf::Mouse::getPosition().y-window->getPosition().y;
+            
+            
+    //        std::cout << rec.getLocalBounds().left << "     "  << rec.getLocalBounds().top << std::endl;
+    //        std::cout << rec.getSize().x << "   " << rec.getSize().y << std::endl;
+            
+            if (rec.getLocalBounds().contains(relativeMousePosX, relativeMousePosY)){
+    //        if(rec.getGlobalBounds().contains(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y)){
+            
+            std::cout << "hoovered"<< std::endl;
+                    setIsHoovered(true);
+
+            }
+            else {
+                setIsHoovered(false);
+            }
+
+            if (HooverAble::getIsHoovered()) {
+                rec.setOutlineThickness(5);
+                hooverAction();
+            }
+            else {
+                rec.setOutlineThickness(0);
 
 		}
-		else {
-			setIsHoovered(false);
-		}
 
-		if (HooverAble::getIsHoovered()) {
-			rec.setOutlineThickness(5);
-			hooverAction();
-		}
-		else {
-			rec.setOutlineThickness(0);
-
-		}
-
-
+        }
 	}
 
 	void hooverAction() {
