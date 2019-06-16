@@ -166,7 +166,7 @@ int main() {
 					break;
 
 				case GameState::playing:
-					cout << "button clicked" << endl;
+					//cout << "button clicked" << endl;
 
 					break;
 				default:
@@ -181,7 +181,7 @@ int main() {
 
 				switch (gameState) {
 				case GameState::playing:
-					cout << "button released" << endl;
+					//cout << "button released" << endl;
 					break;
 
 				case GameState::titleMenu:

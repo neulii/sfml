@@ -28,7 +28,7 @@ void HooverableRectangle::update(long dT) {
 
 		if (rec.getLocalBounds().contains(relativeMousePosX, relativeMousePosY)) {
 
-			std::cout << "hoovered" << std::endl;
+			//std::cout << "hoovered" << std::endl;
 			setIsHoovered(true);
 
 		}
@@ -49,6 +49,6 @@ void HooverableRectangle::update(long dT) {
 }
 
 void HooverableRectangle::hooverAction() {
-	std::cout << "is hoovered" << std::endl;
+	//std::cout << "is hoovered" << std::endl;
 
 }
