@@ -53,7 +53,7 @@ void MapRenderer::setMousePos(sf::Vector2f mousePos) {
 
 //processing moving with keys
 void MapRenderer::processMoving(long dT) {
-	sf::Sprite* sprite = NULL;
+	sf::Sprite* sprite = nullptr;
 
 	//moving left
 	if (movingLeft && !mapIsOnLeftBorder) {
@@ -80,7 +80,7 @@ void MapRenderer::processMoving(long dT) {
 
 		mapIsOnLeftBorder = false;
 		
-		if(sprite!=NULL)
+		if(sprite!=nullptr)
 			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().x + sprite->getTextureRect().width <= windowWidth) {
 				mapIsOnRightBorder = true;
 			}
@@ -108,7 +108,7 @@ void MapRenderer::processMoving(long dT) {
 		}
 		mapIsOnTopBorder = false;
 		
-		if(sprite!=NULL)
+		if(sprite!=nullptr)
 			if (map->getTileAt(map->getSize() - 1)->getSprite()->getPosition().y + sprite->getTextureRect().height <= windowHeight) {
 				mapIsOnBottomBorder = true;
 			}

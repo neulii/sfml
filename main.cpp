@@ -32,14 +32,16 @@ public:
 
 	void setIsHoovered(bool isHoovered){
 		this->isHoovered = isHoovered;
-
 	}
+
+	virtual ~HooverAble(){}
+
 };
 
 class HooverableRectangle : public HooverAble{
 private:
 	
-	sf::RenderWindow *window = NULL;
+	sf::RenderWindow *window = nullptr;
 
 public:
 
@@ -63,11 +65,11 @@ public:
 	}
 
 	void update(long dT) {
-        if(window!=NULL){
+        if(window!=nullptr){
 			//std::cout << sf::Mouse::getPosition().x-window->getPosition().x << "   " << sf::Mouse::getPosition().y - window->getPosition().y << std::endl;
             
-            float relativeMousePosX = sf::Mouse::getPosition().x-window->getPosition().x;
-            float relativeMousePosY = sf::Mouse::getPosition().y-window->getPosition().y;
+            float relativeMousePosX = static_cast<float>(sf::Mouse::getPosition().x-window->getPosition().x);
+            float relativeMousePosY = static_cast<float>(sf::Mouse::getPosition().y-window->getPosition().y);
             
             
     //        std::cout << rec.getLocalBounds().left << "     "  << rec.getLocalBounds().top << std::endl;
@@ -100,6 +102,8 @@ public:
 		std::cout << "is hoovered" << std::endl;
 
 	}
+
+	~HooverableRectangle(){}
 	
 };
 

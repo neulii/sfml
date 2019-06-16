@@ -30,7 +30,7 @@ ProductionTile* GameMap::getTileAt(unsigned pos) {
 
 //getTile from pixels
 ProductionTile* GameMap::getTileAt(sf::Vector2f pos) {
-	ProductionTile* temp = NULL;
+	ProductionTile* temp = nullptr;
 	for (unsigned i = 0; i < gameMap.size(); i++) {
 		if (gameMap.at(i)->contains(pos)) {
 			temp = gameMap.at(i);
