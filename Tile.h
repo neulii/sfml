@@ -28,6 +28,8 @@ class Tile : public GameObject
 		void update(long dT);
 		bool contains(sf::Vector2f pos);
 		sf::Sprite* getSprite();
+		sf::RectangleShape* getRect();
+		void tileToConsole();
 		~Tile();
 	};
 

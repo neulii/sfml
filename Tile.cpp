@@ -14,8 +14,8 @@ Tile::Tile(double x, double y, sf::Texture &texture) {
 	this->width = texture.getSize().x;
 	this->height = texture.getSize().y;
 
+	rect.setFillColor(sf::Color::Transparent);
 	rect.setSize(sf::Vector2f(static_cast<float>(width), static_cast<float>(height)));
-
 	rect.setPosition(static_cast<float>(x), static_cast<float>(y));
 
 	tileSprite.setTexture(*this->texture);
@@ -33,9 +33,19 @@ void Tile::update(long dT) {
 
 }
 
+void Tile::tileToConsole() {
+	std::cout << "Pos: " << x << " / " << y <<std::endl;
+
+}
+
 sf::Sprite* Tile::getSprite()
 {
 	return &tileSprite;
+}
+
+sf::RectangleShape* Tile::getRect()
+{
+	return &rect;
 }
 
 bool Tile::contains(sf::Vector2f pos) {

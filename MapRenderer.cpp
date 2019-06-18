@@ -13,8 +13,23 @@ void MapRenderer::update(long dT)
 	
 	//render border in mouse hoovered tile
 
+
 	ProductionTile* hooveredTile = map->getTileAt(mousePos);
-	//TODO
+	if (!(lastHooveredTile == hooveredTile)) {
+		if(lastHooveredTile!=nullptr)
+			lastHooveredTile->getRect()->setOutlineThickness(0);
+	}
+
+	if (hooveredTile != nullptr) {
+
+		
+		hooveredTile->getRect()->setFillColor(sf::Color::Transparent);
+		hooveredTile->getRect()->setOutlineThickness(-4);
+		hooveredTile->getRect()->setOutlineColor(sf::Color::Red);
+	
+		//hooveredTile->tileToConsole();
+		lastHooveredTile = hooveredTile;
+	}
 }
 
 
@@ -27,6 +42,7 @@ void MapRenderer::render(sf::RenderWindow & window)
 		sf::Vector2f pos = sprite->getPosition();
 
 		window.draw(*sprite);
+		window.draw(*map->getTileAt(i)->getRect());
 	}
 
 }

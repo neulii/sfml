@@ -7,7 +7,10 @@
 class MapRenderer : public GameObject
 {
 private:
-	GameMap* map;
+
+	ProductionTile* lastHooveredTile = nullptr;
+	GameMap* map = nullptr;
+
 	int windowHeight;
 	int windowWidth;
 	sf::Vector2f mousePos;

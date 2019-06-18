@@ -30,15 +30,18 @@ ProductionTile* GameMap::getTileAt(unsigned pos) {
 
 //getTile from pixels
 ProductionTile* GameMap::getTileAt(sf::Vector2f pos) {
-	ProductionTile* temp = nullptr;
-	for (unsigned i = 0; i < gameMap.size(); i++) {
-		if (gameMap.at(i)->contains(pos)) {
-			temp = gameMap.at(i);
+	ProductionTile *temp = nullptr;
 
-		}
+	int tileWidth = gameMap.at(0)->getRect()->getSize().x;
+	int tileHeight = gameMap.at(0)->getRect()->getSize().y;
 
-	}
+	int posTilesX = pos.x / tileWidth; 
+	int posTilesY = pos.y / tileHeight;
 
+	int lineCoord = stringMap->coordToLine(posTilesX, posTilesY);
+	temp = gameMap.at(lineCoord);
+	//cout << temp->getFieldType() << endl;
+	
 	return temp;
 }
 

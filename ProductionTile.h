@@ -2,6 +2,7 @@
 #define PRODUCTIONTILE_H
 
 #include "Tile.h"
+#include <iostream>
 class ProductionTile : public Tile
 {
 private:
@@ -13,8 +14,9 @@ public:
 
 
 	ProductionTile(FieldType fieldType, double x, double y,sf::Texture &texture);
-
 	
+	FieldType getFieldType();
+	void tileToConsole();
 	~ProductionTile();
 };
 

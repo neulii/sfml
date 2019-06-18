@@ -9,6 +9,18 @@ ProductionTile::ProductionTile(FieldType fieldType, double x, double y, sf::Text
 
 }
 
+FieldType ProductionTile::getFieldType() {
+	return fieldType;
+
+}
+
+void ProductionTile::tileToConsole()
+{
+	Tile::tileToConsole();
+	std::cout << fieldType << std::endl;
+	
+}
+
 ProductionTile::~ProductionTile()
 {
 }

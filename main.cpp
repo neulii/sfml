@@ -71,16 +71,6 @@ unsigned Tile::tileCounter = 0;
 
 int main() {
 
-	HooverableRectangle button(sf::Vector2f(50, 50));
-    button.setPosition(sf::Vector2f(0,0));
-
-
-
-	
-
-
-
-
 
 	//create window
 	window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "steelManager", /*sf::Style::Titlebar |*/ sf::Style::None);
@@ -254,11 +244,12 @@ int main() {
 			break;
 
 		case GameState::playing:
-			button.update(timeElapsed);
+			
 			
 			//std::cout << window->getPosition().x << std::endl;
 			window->clear();
 			mapRenderer->update(timeElapsed);
+
 
 			break;
 
@@ -285,7 +276,7 @@ int main() {
 
 		case GameState::playing:
 			mapRenderer->render(*window);
-			button.render(*window);
+			
 
 			break;
 

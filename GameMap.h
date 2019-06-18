@@ -10,7 +10,7 @@ class GameMap
 {
 private:
 	std::vector<ProductionTile*> gameMap;
-	StringMap *stringMap = 0;
+	StringMap *stringMap = nullptr;
 
 
 public:
