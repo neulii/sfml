@@ -30,6 +30,13 @@ void Tile::render(sf::RenderWindow &window) {
 
 //update logic
 void Tile::update(long dT) {
+	
+
+}
+
+void Tile::moveTile(float x, float y) {
+	tileSprite.move(x, y);
+	rect.move(x, y);
 
 }
 

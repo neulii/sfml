@@ -30,6 +30,8 @@ class Tile : public GameObject
 		sf::Sprite* getSprite();
 		sf::RectangleShape* getRect();
 		void tileToConsole();
+		void moveTile(float x, float y);
+
 		~Tile();
 	};
 

@@ -10,25 +10,32 @@ MapRenderer::MapRenderer(GameMap& map, int windowWidth, int windowHeight)
 void MapRenderer::update(long dT)
 {
 	processMoving(dT);
+	map->update(dT);
 	
 	//render border in mouse hoovered tile
 
 
 	ProductionTile* hooveredTile = map->getTileAt(mousePos);
-	if (!(lastHooveredTile == hooveredTile)) {
-		if(lastHooveredTile!=nullptr)
-			lastHooveredTile->getRect()->setOutlineThickness(0);
-	}
+	
+	
+	if (mousePos.x != 0 && mousePos.y != 0)		//erst wenn maus schon bewegt wurde
+	{
 
-	if (hooveredTile != nullptr) {
+		if (!(lastHooveredTile == hooveredTile)) {
+			if(lastHooveredTile!=nullptr)
+				lastHooveredTile->getRect()->setOutlineThickness(0);
+		}
+
+		if (hooveredTile != nullptr) {
 
 		
-		hooveredTile->getRect()->setFillColor(sf::Color::Transparent);
-		hooveredTile->getRect()->setOutlineThickness(-4);
-		hooveredTile->getRect()->setOutlineColor(sf::Color::Red);
+			hooveredTile->getRect()->setFillColor(sf::Color::Transparent);
+			hooveredTile->getRect()->setOutlineThickness(-2);
+			hooveredTile->getRect()->setOutlineColor(sf::Color::Red);
 	
-		//hooveredTile->tileToConsole();
-		lastHooveredTile = hooveredTile;
+			//hooveredTile->tileToConsole();
+			lastHooveredTile = hooveredTile;
+		}
 	}
 }
 
@@ -70,6 +77,7 @@ void MapRenderer::setMousePos(sf::Vector2f mousePos) {
 //processing moving with keys
 void MapRenderer::processMoving(long dT) {
 	sf::Sprite* sprite = nullptr;
+	sf::RectangleShape* rect = nullptr;
 
 	//moving left
 	if (movingLeft && !mapIsOnLeftBorder) {
@@ -78,6 +86,10 @@ void MapRenderer::processMoving(long dT) {
 
 			sprite = map->getTileAt(i)->getSprite();
 			sprite->move(scrollSpeed * dT, 0);
+
+			
+
+
 		}
 
 		mapIsOnRightBorder = false;
@@ -92,6 +104,8 @@ void MapRenderer::processMoving(long dT) {
 		for (unsigned i = 0; i < map->getSize(); i++) {
 			sprite = map->getTileAt(i)->getSprite();
 			sprite->move(-scrollSpeed * dT, 0);
+
+		
 		}
 
 		mapIsOnLeftBorder = false;

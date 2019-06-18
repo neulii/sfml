@@ -19,6 +19,8 @@ public:
 
 	ProductionTile* getTileAt(unsigned pos);
 	ProductionTile* getTileAt(sf::Vector2f pos);
+	void update(long dT);
+
 	unsigned getSize();
 
 	~GameMap();

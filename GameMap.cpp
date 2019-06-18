@@ -45,6 +45,14 @@ ProductionTile* GameMap::getTileAt(sf::Vector2f pos) {
 	return temp;
 }
 
+void GameMap::update(long dT)
+{
+	for (unsigned i = 0; i < gameMap.size(); i++) {
+		gameMap.at(i)->update(dT);
+	}
+
+}
+
 unsigned GameMap::getSize() {
 	return gameMap.size();
 }
