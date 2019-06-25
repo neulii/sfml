@@ -14,20 +14,20 @@ void MenuButton::update(long dT) {
 	shadow.setFillColor(sf::Color::Yellow);
 	shadow.setSize(sf::Vector2f(width, height));
 
-	switch (isHoovered)
+	if (isHoovered)
 	{
-	case true:
+
 
 		this->drawBackgroundcolor = this->hooverBackgroundColor;
 		this->drawTextColor = this->hooverTextColor;
 
-		break;
+	}
 
-	case false:
-
+	else
+	{
 		this->drawBackgroundcolor = this->normalBackgroundColor;
 		this->drawTextColor = this->normalTextColor;
-		break;
+		
 	}
 
 	if (isPressed) {
