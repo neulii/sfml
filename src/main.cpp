@@ -1,15 +1,18 @@
 #include <iostream>
-#include "../include/Tile.h"
-#include "../include/FieldType.h"
-#include "../include/GameState.h"
-#include "../include/MenuButton.h"
-#include "../include/Menu.h"
-#include "../include/StringMap.h"
-#include "../include/ProductionTile.h"
+#include "Functions.hpp"
+#include "Tile.h"
+#include "FieldType.h"
+#include "GameState.h"
+#include "MenuButton.h"
+#include "Menu.h"
+#include "StringMap.h"
+#include "ProductionTile.h"
 #include <set>
-#include "../include/Types.h"
-#include "../include/GameMap.h"
-#include "../include/MapRenderer.h"
+#include "Types.h"
+#include "GameMap.h"
+#include "MapRenderer.h"
+#include "Hooverable.h"
+#include "HooverableRectangle.h"
 
 void loadTextures();
 void startNewGame();
@@ -34,7 +37,7 @@ FieldTextureMap fieldTextureMap;
 
 GameState gameState = GameState::titleMenu;
 
-StringMap stringMap(100,100);
+StringMap stringMap(100, 100);
 
 vector<int> myMap{ 0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,
 				   0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,
@@ -60,8 +63,8 @@ vector<int> myMap{ 0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,
 
 StringMap myStringMap(20, 20, myMap);
 
-GameMap *gameMap;
-MapRenderer *mapRenderer;
+GameMap* gameMap;
+MapRenderer* mapRenderer;
 
 //counter from TileClass
 unsigned Tile::tileCounter = 0;
@@ -70,8 +73,8 @@ int main() {
 
 
 	//create window
-	window = new sf::RenderWindow (sf::VideoMode(windowWidth,windowHeight),"steelManager",sf::Style::Titlebar | sf::Style::Close);
-    window->setFramerateLimit(60);		//set frame limit to 60 fps
+	window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "steelManager", /*sf::Style::Titlebar |*/ sf::Style::None);
+	window->setFramerateLimit(60);		//set frame limit to 60 fps
 
 	//laden der texturen
 	loadTextures();
@@ -84,12 +87,12 @@ int main() {
 	titleMenu.addMenuButton("Spiel Laden", 150, 50);
 	titleMenu.addMenuButton("Spiel Beenden", 150, 50);
 
-    sf::Time time;
-    sf::Clock dT;
+	sf::Time time;
+	sf::Clock dT;
 
 	//Gameloop
-    while (window->isOpen()) {
-        sf::Event event;
+	while (window->isOpen()) {
+		sf::Event event;
 
 		//umwandlung von int in float
 		sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
@@ -97,91 +100,92 @@ int main() {
 
 		string clickedButton = "none";
 
-    while(window->pollEvent(event)){
+		while (window->pollEvent(event)) {
 
-      switch (event.type){
-        case sf::Event::Closed:
+			switch (event.type) {
+			case sf::Event::Closed:
 
-            window->close();
-            break;
+				window->close();
+				break;
 
 
 				//Mouse moved
-				case sf::Event::MouseMoved:
-					switch(gameState){
-						case GameState::playing:
+			case sf::Event::MouseMoved:
+				switch (gameState) {
+				case GameState::playing:
 
-							mapRenderer->setMousePos(mousePosF);
+					mapRenderer->setMousePos(mousePosF);
 
-							break;
-
-						case GameState::titleMenu:
-							titleMenu.setMousePos(mousePosF);
-
-							break;
-
-					}
 
 					break;
+
+				case GameState::titleMenu:
+					titleMenu.setMousePos(mousePosF);
+
+					break;
+
+				}
+
+				break;
 				//mouse button pressed
-				case sf::Event::MouseButtonPressed:
+			case sf::Event::MouseButtonPressed:
 
-					switch (gameState)
-					{
-					case GameState::titleMenu:
+				switch (gameState)
+				{
+				case GameState::titleMenu:
 
-						clickedButton = titleMenu.clicked();
+					clickedButton = titleMenu.clicked();
 
-						//Neues Spiel starten
-						if (clickedButton == "Neues Spiel") {
-							startNewGame();
+					//Neues Spiel starten
+					if (clickedButton == "Neues Spiel") {
+						startNewGame();
 
-						}
-
-						//Spiel Laden
-						if (clickedButton == "Spiel Laden") {
-
-
-						}
-
-						//Spiel beenden
-						if (clickedButton == "Spiel Beenden") {
-							exit(0);
-						}
-
-						break;
-
-						case GameState::playing:
-							cout << "button clicked" << endl;
-
-						break;
-					default:
-						break;
 					}
 
+					//Spiel Laden
+					if (clickedButton == "Spiel Laden") {
+
+
+					}
+
+					//Spiel beenden
+					if (clickedButton == "Spiel Beenden") {
+						exit(0);
+					}
 
 					break;
+
+				case GameState::playing:
+					//cout << "button clicked" << endl;
+
+					break;
+				default:
+					break;
+				}
+
+
+				break;
 
 				//mouse button released
-				case sf::Event::MouseButtonReleased:
+			case sf::Event::MouseButtonReleased:
 
-					switch(gameState){
-						case GameState::playing:
-							cout << "button released" << endl;
-							break;
-
-						case GameState::titleMenu:
-							titleMenu.mouseRelease();
-							break;
-					}
-
-
+				switch (gameState) {
+				case GameState::playing:
+					//cout << "button released" << endl;
 					break;
-            }
-        }
 
-        time = dT.getElapsedTime();
-        long timeElapsed = time.asMilliseconds();
+				case GameState::titleMenu:
+					titleMenu.mouseRelease();
+					break;
+				}
+
+
+				break;
+			}
+		}
+
+		time = dT.getElapsedTime();
+		long timeElapsed = time.asMilliseconds();
 
 		//check key's
 
@@ -219,11 +223,14 @@ int main() {
 			else
 				mapRenderer->moveDown(false);
 
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+                    gameState = GameState::titleMenu;
+                }
 			break;
 		}
 
-        //update game logic
-        dT.restart();		//restart clock
+		//update game logic
+		dT.restart();		//restart clock
 
 		switch (gameState)
 		{
@@ -238,8 +245,11 @@ int main() {
 
 		case GameState::playing:
 
+
+			//std::cout << window->getPosition().x << std::endl;
 			window->clear();
 			mapRenderer->update(timeElapsed);
+
 
 			break;
 
@@ -254,7 +264,7 @@ int main() {
 
 
 
-    //rendering objects
+		//rendering objects
 		switch (gameState)
 		{
 
@@ -267,6 +277,7 @@ int main() {
 		case GameState::playing:
 			mapRenderer->render(*window);
 
+
 			break;
 
 		case GameState::pausedMenu:
@@ -279,10 +290,10 @@ int main() {
 
 
 
-        window->display();
-    }
+		window->display();
+	}
 
-    return EXIT_SUCCESS ;
+	return EXIT_SUCCESS;
 }
 
 //lade texturen
@@ -312,7 +323,7 @@ void loadTextures() {
 	fieldTextureMap.insert(make_pair(2, coalMineFieldTexture));
 	fieldTextureMap.insert(make_pair(3, ironOreFieldTexture));
 	fieldTextureMap.insert(make_pair(4, ironOreMineFieldTexture));
-	fieldTextureMap.insert(make_pair(5,	furnaceFieldTexture));
+	fieldTextureMap.insert(make_pair(5, furnaceFieldTexture));
 
 }
 
@@ -324,6 +335,6 @@ void startNewGame() {
 	gameMap = new GameMap(myStringMap, fieldTextureMap);
 	std::cout << "gameMap created   " << endl;
 
-	mapRenderer = new MapRenderer(*gameMap,windowWidth, windowHeight);
+	mapRenderer = new MapRenderer(*gameMap, windowWidth, windowHeight);
 	gameState = GameState::playing;
 }

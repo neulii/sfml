@@ -35,6 +35,8 @@ private:
 
 	sf::RectangleShape buttonShape;
 
+	sf::RectangleShape shadow;
+
 public:
 	
 	MenuButton(string buttonText, float x, float y, float width, float height);

@@ -1,5 +1,4 @@
-#include "../include/GameMap.h"
-
+#include "GameMap.h"
 
 GameMap::GameMap(StringMap& stringMap, FieldTextureMap& textureMap)
 {
@@ -7,7 +6,7 @@ GameMap::GameMap(StringMap& stringMap, FieldTextureMap& textureMap)
 
 	//create tiles for gamemap
 
-	for (int i = 0; i < this->stringMap->getMapSize(); i++) {
+	for (unsigned i = 0; i < this->stringMap->getMapSize(); i++) {
 
 		//position der bloecke ermitteln
 		unsigned xPosBlocks = stringMap.lineToCoord(i).at(0);	//erster wert ist x-pos
@@ -29,13 +28,29 @@ ProductionTile* GameMap::getTileAt(unsigned pos) {
 	return gameMap.at(pos);
 }
 
-//getTile in 
-ProductionTile* GameMap::getTileAt(sf::Vector2f pos){
-	ProductionTile* temp;
-	// for(int i = 0; i<gameMap.size(); i++){
-		
+//getTile from pixels
+ProductionTile* GameMap::getTileAt(sf::Vector2f pos) {
+	ProductionTile *temp = nullptr;
 
-	// 
+	int tileWidth = gameMap.at(0)->getRect()->getSize().x;
+	int tileHeight = gameMap.at(0)->getRect()->getSize().y;
+
+	int posTilesX = pos.x / tileWidth;
+	int posTilesY = pos.y / tileHeight;
+
+	int lineCoord = stringMap->coordToLine(posTilesX, posTilesY);
+	temp = gameMap.at(lineCoord);
+	//cout << temp->getFieldType() << endl;
+
+	return temp;
+}
+
+void GameMap::update(long dT)
+{
+	for (unsigned i = 0; i < gameMap.size(); i++) {
+		gameMap.at(i)->update(dT);
+	}
+
 }
 
 unsigned GameMap::getSize() {

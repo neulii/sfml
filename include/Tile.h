@@ -9,8 +9,8 @@ class Tile : public GameObject
 
 		static unsigned tileCounter;
 
-		int x;
-		int y;
+		double x;
+		double y;
 		int width;
 		int height;
 
@@ -23,10 +23,15 @@ class Tile : public GameObject
 
 	public:
 		//Tile(FieldType fieldType, int x, int y, sf::Texture texture);
-		Tile(int x, int y, sf::Texture &texture);
+		Tile(double x, double y, sf::Texture &texture);
 		void render(sf::RenderWindow &window);
 		void update(long dT);
+		bool contains(sf::Vector2f pos);
 		sf::Sprite* getSprite();
+		sf::RectangleShape* getRect();
+		void tileToConsole();
+		void moveTile(float x, float y);
+
 		~Tile();
 	};
 

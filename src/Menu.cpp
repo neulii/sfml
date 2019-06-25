@@ -1,4 +1,4 @@
-#include "../include/Menu.h"
+#include "Menu.h"
 #include <iostream>
 
 Menu::Menu(sf::RenderWindow &window)
@@ -11,6 +11,8 @@ void Menu::update(long dT)
 {
 	for (MenuButton *button : menuButtons)
 	{
+		button->update(dT);
+		
 		if (button->getButtonBounds().contains(this->mousePos)) {
 			button->setHoovered(true);
 		}
@@ -31,7 +33,7 @@ string Menu::clicked() {
 	string buttonClicked = "none";
 
 	for (MenuButton* button : menuButtons) {
-
+		
 		if (button->getIsHoovered()) {
 			button->setPressed(true);
 			buttonClicked = button->getButtonText();
@@ -72,7 +74,7 @@ void Menu::render(sf::RenderWindow& window)
 }
 
 void Menu::addMenuButton(string text, float width, float height) {
-
+	
 	menuButtons.push_back(new MenuButton(text, (window->getSize().x-width) / 2, distanceTop + menuButtons.size()*(height+distanceBetween), width, height));
 }
 

@@ -5,7 +5,7 @@ CXXFLAGS = -Wall -std=c++11
 LDLIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 
 LDFLAGS = -L "SFML/lib"
-CPPFLAGS = -I "SFML/include"
+CPPFLAGS = -I "SFML/include" -I "include"
 
 game: $(OBJS)
 	$(CXX) $(CXXFLAGS) -o game $(OBJS) $(LDLIBS) $(LDFLAGS)

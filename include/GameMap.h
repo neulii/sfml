@@ -10,23 +10,22 @@ class GameMap
 {
 private:
 	std::vector<ProductionTile*> gameMap;
-	StringMap *stringMap = 0;
+	StringMap *stringMap = nullptr;
 
 
 public:
 	/*GameMap(StringMap &stringMap);*/
 	GameMap(StringMap& stringMap,FieldTextureMap &textureMap);
 
-	//getTile in bocks
 	ProductionTile* getTileAt(unsigned pos);
-
-	//getTile in xpos/ypos
 	ProductionTile* getTileAt(sf::Vector2f pos);
+	void update(long dT);
 
 	unsigned getSize();
-
 
 	~GameMap();
 };
 
 #endif // !GAMEMAP_H
+
+
